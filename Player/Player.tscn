@@ -1,3 +1,27 @@
 [gd_scene format=3 uid="uid://b8uwwjaheopus"]
 
-[node name="Node2D" type="Node2D" unique_id=1368586423]
+[ext_resource type="Script" uid="uid://bupse5x8f21tf" path="res://Player/player.gd" id="1_q3lat"]
+[ext_resource type="Texture2D" uid="uid://c6ufx72upq430" path="res://Player/Screenshot 2025-07-21 132008.png" id="2_tok1r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
+size = Vector2(45, 50)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1601155827]
+position = Vector2(591, 296)
+script = ExtResource("1_q3lat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=804397636]
+position = Vector2(12.5, -15)
+shape = SubResource("RectangleShape2D_af25e")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=573628744]
+position = Vector2(-2.842171e-14, -0.058140863)
+scale = Vector2(0.81395346, 0.81513995)
+texture = ExtResource("2_tok1r")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=8602036]
+
+[node name="RotationTimer" type="Timer" parent="." unique_id=1899031143]
+wait_time = 3.0
+
+[connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]

@@ -1,3 +1,13 @@
 [gd_scene format=3 uid="uid://y7ecnx7ph5c1"]
 
+[ext_resource type="PackedScene" uid="uid://b8uwwjaheopus" path="res://Player/Player.tscn" id="1_cbsy4"]
+[ext_resource type="AudioStream" uid="uid://ds281wr1c3who" path="res://Namepending-one-v1.mp3" id="2_e18lo"]
+
 [node name="Node2D" type="Node2D" unique_id=180366170]
+
+[node name="CharacterBody2D" parent="." unique_id=1601155827 instance=ExtResource("1_cbsy4")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1972800559]
+stream = ExtResource("2_e18lo")
+autoplay = true
+parameters/looping = true
