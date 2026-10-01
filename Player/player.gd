@@ -1,14 +1,14 @@
 class_name Player
 extends CharacterBody2D
 
-const SPEED : float = 425.0
+@export var SPEED : float = 425.0
 var using_controller := true
 var using_controller_right := false
 var useleftrotation = true
 var last_aim_angle : float = 0.0
-const TURN_SPEED := 12.0
-const LTURN_SPEED := 20.0
-const maxHealth = 100
+@export var TURN_SPEED := 12.0
+@export var LTURN_SPEED := 20.0
+@export var maxHealth = 100
 var currentHealth
 var damageTaken
 

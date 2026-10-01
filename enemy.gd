@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-var maxEnemyHealth = 50
+@export var maxEnemyHealth = 50
 var enemyHealth
-var enemyDamage = 25
+@export var enemyDamage = 25
 
-const SPEED = 250
+@export var SPEED = 250
 var damageTime = true
 
 var player: CharacterBody2D
