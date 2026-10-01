@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c8gb4vjrbtw41"]
+
+[ext_resource type="Script" uid="uid://no6oxtfcedve" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://c3jmab7w11cin" path="res://Player/image.png" id="2_qi2p4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3lat"]
+size = Vector2(54, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
+size = Vector2(14, 58)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1825160351 groups=["Enemy", "Melee"]]
+motion_mode = 1
+script = ExtResource("1_4gyqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870279104]
+shape = SubResource("RectangleShape2D_q3lat")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1669331841]
+position = Vector2(0, -1.0728836e-06)
+scale = Vector2(0.07976366, 0.07785235)
+texture = ExtResource("2_qi2p4")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=56399267 groups=["Enemy", "Melee"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=240869863 groups=["Enemy"]]
+position = Vector2(34, 0)
+shape = SubResource("RectangleShape2D_af25e")
+
+[node name="DamageTimer" type="Timer" parent="." unique_id=891839855]
+
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

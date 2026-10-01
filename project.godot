@@ -19,6 +19,16 @@ run/main_scene="uid://y7ecnx7ph5c1"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://dbwv252d4afo4"
+
+[global_group]
+
+Player=""
+Enemy=""
+Melee=""
+
 [input]
 
 Up={

@@ -4,24 +4,34 @@
 [ext_resource type="Texture2D" uid="uid://c6ufx72upq430" path="res://Player/Screenshot 2025-07-21 132008.png" id="2_tok1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
-size = Vector2(45, 50)
+size = Vector2(70, 80)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1601155827]
-position = Vector2(591, 296)
+[node name="Player" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
+motion_mode = 1
 script = ExtResource("1_q3lat")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=804397636]
-position = Vector2(12.5, -15)
 shape = SubResource("RectangleShape2D_af25e")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=573628744]
-position = Vector2(-2.842171e-14, -0.058140863)
-scale = Vector2(0.81395346, 0.81513995)
-texture = ExtResource("2_tok1r")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=8602036]
 
 [node name="RotationTimer" type="Timer" parent="." unique_id=1899031143]
 wait_time = 3.0
 
+[node name="Area2D" type="Area2D" parent="." unique_id=235330107 groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=510006997]
+shape = SubResource("RectangleShape2D_af25e")
+
+[node name="DamageTimer" type="Timer" parent="." unique_id=2050933388]
+wait_time = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=573628744]
+position = Vector2(-2.842171e-14, -0.058140863)
+scale = Vector2(0.81395346, 0.81513995)
+texture = ExtResource("2_tok1r")
+
 [connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
