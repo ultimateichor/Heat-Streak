@@ -171,7 +171,6 @@ func _swap_to(path: String) -> void:
 	var newForm: Player = load(path).instantiate()
 	newForm.global_position = global_position
 	newForm.rotaion = rotation
-	newForm
 	newForm.currentHealth = currentHealth
 	newForm.using_controller = using_controller
 	

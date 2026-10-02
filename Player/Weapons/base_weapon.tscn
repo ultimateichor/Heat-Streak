@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ctjxhfrs5am37"]
+
+[ext_resource type="Script" uid="uid://c47lpw4u622p3" path="res://Player/Weapons/base_weapon.gd" id="1_trjea"]
+[ext_resource type="PackedScene" uid="uid://crycqqdbftrbe" path="res://Player/Weapons/bullet.tscn" id="2_o4jqw"]
+
+[node name="BaseWeapon" type="Node2D" unique_id=1133059679]
+script = ExtResource("1_trjea")
+bullet_scene = ExtResource("2_o4jqw")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1857440017]

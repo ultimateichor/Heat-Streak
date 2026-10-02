@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bupse5x8f21tf" path="res://Player/player.gd" id="1_q3lat"]
 [ext_resource type="Texture2D" uid="uid://c6ufx72upq430" path="res://Player/Screenshot 2025-07-21 132008.png" id="2_tok1r"]
-[ext_resource type="PackedScene" uid="uid://ctjxhfrs5am37" path="res://base_weapon.tscn" id="3_tok1r"]
+[ext_resource type="PackedScene" uid="uid://ctjxhfrs5am37" path="res://Player/Weapons/base_weapon.tscn" id="3_tok1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(70, 80)
