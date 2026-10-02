@@ -100,7 +100,7 @@ func _physics_process(delta: float) -> void:
 		_equip_loadout(GameManager.selected_vehicle)
 	
 	if Input.is_action_just_pressed("Transform"):
-		#_transform()
+		_transform()
 		pass
 	
 	move_and_slide()
