@@ -9,15 +9,22 @@ var last_aim_angle : float = 0.0
 @export var TURN_SPEED := 12.0
 @export var LTURN_SPEED := 20.0
 @export var maxHealth = 100
-var currentHealth
+var currentHealth = -1
 var damageTaken
 
 var target_angle = rotation
 
+@export var isRobot = true
+
+var primaryWeapon : Weapon
+var secondaryWeapon : Weapon
+
 
 func _ready() -> void:
 	GameManager.player = self
-	currentHealth = maxHealth
+	if currentHealth < 0:
+		currentHealth = maxHealth
+	_equip_loadout(GameManager.selected_vehicle)
 	print(currentHealth)
 
 #checks current input method
@@ -34,11 +41,8 @@ func _physics_process(delta: float) -> void:
 	var direction := Vector2(
 	Input.get_axis("Left", "Right"),
 	Input.get_axis("Up", "Down")
-).limit_length(1.0)
-	if direction.length() > 0.3:
-		velocity = direction * SPEED
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
+	).limit_length(1.0)
+	_move(direction, delta)
 	#Rotation
 	var aim := Input.get_vector("Look Left", "Look Right", "Look Up", "Look Down")
 	#print(direction)
@@ -64,16 +68,59 @@ func _physics_process(delta: float) -> void:
 	#Shooting
 	if Input.is_action_pressed("Shoot Primary"):
 		_shoot_primary()
+		
+	if Input.is_action_pressed("Shoot Secondary"):
+		_shoot_secondary()
+	
+	if Input.is_action_just_pressed("Car"):
+		if GameManager.selected_vehicle == 0:
+			return
+		GameManager.select_vehicle(0)
+		_equip_loadout(GameManager.selected_vehicle)
+	elif Input.is_action_just_pressed("Helicopter"):
+		if !GameManager.unlocked_vehicles.has(1):
+			return
+		if GameManager.selected_vehicle == 1:
+			return
+		GameManager.select_vehicle(1)
+		_equip_loadout(GameManager.selected_vehicle)
+	elif Input.is_action_just_pressed("Tank"):
+		if !GameManager.unlocked_vehicles.has(2):
+			return
+		if GameManager.selected_vehicle == 2:
+			return
+		GameManager.select_vehicle(2)
+		_equip_loadout(GameManager.selected_vehicle)
+	elif Input.is_action_just_pressed("Jet"):
+		if !GameManager.unlocked_vehicles.has(3):
+			return
+		if GameManager.selected_vehicle == 3:
+			return
+		GameManager.select_vehicle(3)
+		_equip_loadout(GameManager.selected_vehicle)
+	
+	if Input.is_action_just_pressed("Transform"):
+		#_transform()
+		pass
 	
 	move_and_slide()
 	
+	
+func _move(direction: Vector2, delta: float) -> void:
+	if direction.length() > 0.3:
+		velocity = direction * SPEED
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
+		
+	
 #Read the name
 func _shoot_primary():
-	print("bullet")
+	primaryWeapon._try_fire(Input.is_action_just_pressed("Shoot Primary"))
 	
 #Read the name 2 Electric Boogaloo and Knuckles HD Deluxe with new Funky mode Featuring Dante from the Devil May Cry Series Definitive Edition HD Remix 2.8 Final Chapter Prologue Director's Cut: Game of the Year Edition Turbo HD Remix
 func _shoot_secondary():
-	pass
+	secondaryWeapon._try_fire(Input.is_action_just_pressed("Shoot Secondary"))
+	
 #Timer for changing rotation back to movement
 func _on_rotation_timer_timeout() -> void:
 	useleftrotation = true
@@ -91,4 +138,47 @@ func _die():
 	queue_free()
 	#get_tree().call_deferred("change_scene_to_file", 'res://UI/Screens/Lose/Game_Over.tscn')
 
+func _equip_loadout(index: int) -> void:
+	if !has_node("Loadouts"):
+		return
+	var loadouts = $Loadouts.get_children()
+	
+	if index >= loadouts.size():
+		return
+	for i in loadouts.size():
+		var active: bool = (i == index)
+		if active:
+			loadouts[i].visible = true
+			loadouts[i].process_mode = Node.PROCESS_MODE_INHERIT
+		else:
+			loadouts[i].visible = false
+			loadouts[i].process_mode = Node.PROCESS_MODE_DISABLED
+	var current = loadouts[index]
+	primaryWeapon = current.get_node_or_null("Primary")
+	secondaryWeapon = current.get_node_or_null("Secondary")
+	
+	
+	
+func _transform() -> void:
+	if isRobot:
+		if GameManager.unlocked_vehicles.is_empty():
+			return
+		_swap_to(GameManager.Vehicle_Scenes[GameManager.selected_vehicle])
+	else:
+		_swap_to(GameManager.ROBOT_SCENE)
+
+func _swap_to(path: String) -> void:
+	var newForm: Player = load(path).instantiate()
+	newForm.global_position = global_position
+	newForm.rotaion = rotation
+	newForm
+	newForm.currentHealth = currentHealth
+	newForm.using_controller = using_controller
+	
+	set_physics_process(false)
+	hide()
+	$Area2D.set_deferred("monitorable", false)
+	
+	get_parent().add_child(newForm)
+	queue_free()
 		

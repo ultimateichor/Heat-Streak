@@ -13,6 +13,13 @@ var useHim = false
 
 var highScore : int
 
+const ROBOT_SCENE := "res://Player/Robot.tscn"
+const VEHICLE_SCENES := [
+	"res://Player/Car.tscn",
+]
+
+var unlocked_vehicles: Array[int] = [0]
+var selected_vehicle := 0
 
 func _process(_delta: float) -> void:
 	pass
@@ -24,6 +31,14 @@ func _end_game():
 	gameStarted = false
 	readyToStart = false
 	currentGameSpeed = 0
+	
+func _unlock_vehicle(index: int) -> void:
+	if index not in unlocked_vehicles:
+		unlocked_vehicles.append(index)
+
+func _select_vehicle(index: int) -> void:
+	if index in unlocked_vehicles:
+		selected_vehicle = index
 
 func load_images_from_dir(path: String, outArray: Array) -> void:
 	if not path.ends_with("/"):
