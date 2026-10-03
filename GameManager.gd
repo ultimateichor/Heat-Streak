@@ -15,7 +15,7 @@ var highScore : int
 
 const ROBOT_SCENE := "res://Player/Robot.tscn"
 const VEHICLE_SCENES := [
-	"res://Player/Car.tscn",
+	"res://Player/Vehicles/Car.tscn",
 ]
 
 var unlocked_vehicles: Array[int] = [0]

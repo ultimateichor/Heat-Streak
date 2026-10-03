@@ -38,6 +38,7 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	#movement
+	var last_pos := Vector2.ZERO
 	var direction := Vector2(
 	Input.get_axis("Left", "Right"),
 	Input.get_axis("Up", "Down")
@@ -73,31 +74,24 @@ func _physics_process(delta: float) -> void:
 		_shoot_secondary()
 	
 	if Input.is_action_just_pressed("Car"):
-		if GameManager.selected_vehicle == 0:
-			return
-		GameManager.select_vehicle(0)
-		_equip_loadout(GameManager.selected_vehicle)
+		if !GameManager.selected_vehicle == 0:
+			GameManager.select_vehicle(0)
+			_equip_loadout(GameManager.selected_vehicle)
 	elif Input.is_action_just_pressed("Helicopter"):
-		if !GameManager.unlocked_vehicles.has(1):
-			return
-		if GameManager.selected_vehicle == 1:
-			return
-		GameManager.select_vehicle(1)
-		_equip_loadout(GameManager.selected_vehicle)
+		if GameManager.unlocked_vehicles.has(1):
+			if !GameManager.selected_vehicle == 1:
+				GameManager.select_vehicle(1)
+				_equip_loadout(GameManager.selected_vehicle)
 	elif Input.is_action_just_pressed("Tank"):
-		if !GameManager.unlocked_vehicles.has(2):
-			return
-		if GameManager.selected_vehicle == 2:
-			return
-		GameManager.select_vehicle(2)
-		_equip_loadout(GameManager.selected_vehicle)
+		if GameManager.unlocked_vehicles.has(2):
+			if !GameManager.selected_vehicle == 2:
+				GameManager.select_vehicle(2)
+				_equip_loadout(GameManager.selected_vehicle)
 	elif Input.is_action_just_pressed("Jet"):
-		if !GameManager.unlocked_vehicles.has(3):
-			return
-		if GameManager.selected_vehicle == 3:
-			return
-		GameManager.select_vehicle(3)
-		_equip_loadout(GameManager.selected_vehicle)
+		if GameManager.unlocked_vehicles.has(3):
+			if !GameManager.selected_vehicle == 3:
+				GameManager.select_vehicle(3)
+				_equip_loadout(GameManager.selected_vehicle)
 	
 	if Input.is_action_just_pressed("Transform"):
 		_transform()
@@ -139,23 +133,20 @@ func _die():
 	#get_tree().call_deferred("change_scene_to_file", 'res://UI/Screens/Lose/Game_Over.tscn')
 
 func _equip_loadout(index: int) -> void:
-	if !has_node("Loadouts"):
-		return
-	var loadouts = $Loadouts.get_children()
-	
-	if index >= loadouts.size():
-		return
-	for i in loadouts.size():
-		var active: bool = (i == index)
-		if active:
-			loadouts[i].visible = true
-			loadouts[i].process_mode = Node.PROCESS_MODE_INHERIT
-		else:
-			loadouts[i].visible = false
-			loadouts[i].process_mode = Node.PROCESS_MODE_DISABLED
-	var current = loadouts[index]
-	primaryWeapon = current.get_node_or_null("Primary")
-	secondaryWeapon = current.get_node_or_null("Secondary")
+	if has_node("Loadouts"):
+		var loadouts = $Loadouts.get_children()
+		if index <= loadouts.size():
+			for i in loadouts.size():
+				var active: bool = (i == index)
+				if active:
+					loadouts[i].visible = true
+					loadouts[i].process_mode = Node.PROCESS_MODE_INHERIT
+				else:
+					loadouts[i].visible = false
+					loadouts[i].process_mode = Node.PROCESS_MODE_DISABLED
+			var current = loadouts[index]
+			primaryWeapon = current.get_node_or_null("Primary")
+			secondaryWeapon = current.get_node_or_null("Secondary")
 	
 	
 	
@@ -178,6 +169,5 @@ func _swap_to(path: String) -> void:
 	hide()
 	$Area2D.set_deferred("monitorable", false)
 	
-	get_parent().add_child(newForm)
 	queue_free()
 		

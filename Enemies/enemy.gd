@@ -11,6 +11,7 @@ var player: CharacterBody2D
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
+	enemyHealth = maxEnemyHealth
 
 func _physics_process(delta: float) -> void:
 	if not player:
@@ -32,7 +33,13 @@ func _physics_process(delta: float) -> void:
 			break
 	
 	
-
+func _enemy_take_damage(damage: int) -> void:
+	enemyHealth -= damage
+	if enemyHealth <= 0:
+		_enemy_die()
+		
+func _enemy_die() -> void:
+	queue_free()
 #Stops movement and ability to damage until timeout
 func _on_damage_timer_timeout() -> void:
 	damageTime = true

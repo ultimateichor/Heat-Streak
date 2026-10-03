@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b8uwwjaheopus" path="res://Player/Player.tscn" id="1_cbsy4"]
 [ext_resource type="AudioStream" uid="uid://ds281wr1c3who" path="res://Namepending-one-v1.mp3" id="2_e18lo"]
-[ext_resource type="PackedScene" uid="uid://c8gb4vjrbtw41" path="res://enemy.tscn" id="3_y7fgq"]
+[ext_resource type="PackedScene" uid="uid://c8gb4vjrbtw41" path="res://Enemies/enemy.tscn" id="3_y7fgq"]
 
 [node name="Node2D" type="Node2D" unique_id=180366170]
 
@@ -11,8 +11,25 @@ position = Vector2(551, 248)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1972800559]
 stream = ExtResource("2_e18lo")
-autoplay = true
 parameters/looping = true
 
 [node name="Enemy" parent="." unique_id=1825160351 instance=ExtResource("3_y7fgq")]
 position = Vector2(430, 380)
+
+[node name="Enemy2" parent="." unique_id=1784527774 instance=ExtResource("3_y7fgq")]
+position = Vector2(835, 537)
+
+[node name="Enemy3" parent="." unique_id=1230733697 instance=ExtResource("3_y7fgq")]
+position = Vector2(464, 544)
+
+[node name="Enemy4" parent="." unique_id=1041891596 instance=ExtResource("3_y7fgq")]
+position = Vector2(1074, 398)
+
+[node name="Enemy5" parent="." unique_id=1488742181 instance=ExtResource("3_y7fgq")]
+position = Vector2(718, 571)
+
+[node name="Enemy6" parent="." unique_id=580899055 instance=ExtResource("3_y7fgq")]
+position = Vector2(941, 269)
+
+[node name="Enemy7" parent="." unique_id=1101833908 instance=ExtResource("3_y7fgq")]
+position = Vector2(849, 416)
