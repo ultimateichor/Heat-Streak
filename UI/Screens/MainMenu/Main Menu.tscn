@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://hot0sm25j36k"]
+
+[ext_resource type="Script" uid="uid://cgxxkqk5e0xti" path="res://UI/Screens/MainMenu/main_menu.gd" id="1_dvdtt"]
+[ext_resource type="PackedScene" uid="uid://vfotnmrfymy7" path="res://UI/Screens/Pause/Volume Slider.tscn" id="2_ixx8w"]
+[ext_resource type="Texture2D" uid="uid://c64kkn6rnry7d" path="res://Assets/sddefault.jpg" id="2_kdxb7"]
+[ext_resource type="Script" uid="uid://c7y65rmuf5qeu" path="res://UI/fadeIn.gd" id="3_nnhq3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nnhq3"]
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdxb7"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 578
+corner_radius_bottom_right = 1296
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olgm7"]
+bg_color = Color(0.7137255, 0, 0, 1)
+corner_radius_top_left = 514
+corner_radius_bottom_right = 346
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flpcr"]
+bg_color = Color(0.7137255, 0, 0, 1)
+corner_radius_top_left = 286
+corner_radius_bottom_right = 444
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_pqakh"]
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wodu"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 232
+corner_radius_bottom_right = 226
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7of4y"]
+bg_color = Color(0.7137255, 0, 0, 1)
+corner_radius_top_left = 211
+corner_radius_bottom_right = 312
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lrjb5"]
+bg_color = Color(0.7137255, 0, 0, 1)
+corner_radius_top_left = 1613
+corner_radius_bottom_right = 431
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_7fiih"]
+font_color = Color(1, 0, 0, 1)
+
+[node name="Main Menu" type="Control" unique_id=1232720408]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_dvdtt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2132439429]
+position = Vector2(385.66666, 215)
+scale = Vector2(1.2052084, 0.90416664)
+texture = ExtResource("2_kdxb7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=187169505]
+visible = false
+position = Vector2(576.272, 322.99548)
+scale = Vector2(0.5337927, 0.398771)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1155440388]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 211.33333
+offset_right = 275.0
+offset_bottom = 352.3333
+
+[node name="Start" type="Button" parent="VBoxContainer2" unique_id=782562226]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
+text = "Start"
+
+[node name="Settings" type="Button" parent="VBoxContainer2" unique_id=796151785]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
+text = "Settings"
+
+[node name="Quit" type="Button" parent="VBoxContainer2" unique_id=1657767267]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
+text = "Quit"
+
+[node name="ManButton" type="Button" parent="." unique_id=997812766]
+layout_mode = 0
+offset_left = 569.3333
+offset_top = 112.66667
+offset_right = 585.3333
+offset_bottom = 131.19296
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1459787551]
+visible = false
+layout_mode = 0
+offset_left = 58.0
+offset_top = 202.66667
+offset_right = 358.0
+offset_bottom = 382.6667
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=533504044]
+layout_mode = 2
+text = "Master"
+label_settings = SubResource("LabelSettings_nnhq3")
+
+[node name="Volume_Slider" parent="VBoxContainer" unique_id=1267410820 instance=ExtResource("2_ixx8w")]
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_kdxb7")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_olgm7")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_flpcr")
+bus_name = "Master"
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1079255019]
+layout_mode = 2
+text = "SFX"
+label_settings = SubResource("LabelSettings_pqakh")
+
+[node name="Volume_Slider2" parent="VBoxContainer" unique_id=836847433 instance=ExtResource("2_ixx8w")]
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_7wodu")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_7of4y")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_lrjb5")
+bus_name = "SFX"
+
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=1464145167]
+layout_mode = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_7fiih")
+
+[node name="Volume_Slider3" parent="VBoxContainer" unique_id=1868881321 instance=ExtResource("2_ixx8w")]
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_7wodu")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_7of4y")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_lrjb5")
+bus_name = "SFX"
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=102894948]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
+text = "Apply"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=156947784]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=257510191]
+offset_right = 1730.0
+offset_bottom = 973.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_nnhq3")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="VBoxContainer2/Start" to="." method="_on_start_pressed"]
+[connection signal="button_down" from="VBoxContainer2/Settings" to="." method="_on_settings_button_down"]
+[connection signal="pressed" from="VBoxContainer2/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ManButton" to="." method="_on_man_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

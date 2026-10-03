@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://b6vdn1gdinquu"]
+
+[ext_resource type="Script" uid="uid://dc2ghm2g4856a" path="res://UI/Screens/Lose/game_over.gd" id="1_5ruhh"]
+[ext_resource type="Texture2D" uid="uid://c64kkn6rnry7d" path="res://Assets/sddefault.jpg" id="2_mb2jm"]
+[ext_resource type="Script" uid="uid://c7y65rmuf5qeu" path="res://UI/fadeIn.gd" id="3_hbypc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mb2jm"]
+
+[node name="Game Over" type="Control" unique_id=347231002]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.00036422155
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_5ruhh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1670063709]
+material = SubResource("ShaderMaterial_mb2jm")
+position = Vector2(384.2758, 216.41171)
+scale = Vector2(1.2012429, 0.9021468)
+texture = ExtResource("2_mb2jm")
+
+[node name="Label" type="Label" parent="." unique_id=778684997]
+layout_mode = 0
+offset_left = 69.30664
+offset_top = 73.35858
+offset_right = 238.30664
+offset_bottom = 112.35858
+rotation = 0.39618975
+scale = Vector2(1.51, 1.51)
+text = "Your didnt it"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=907791062]
+layout_mode = 0
+offset_left = 25.251747
+offset_top = 224.00922
+offset_right = 201.91962
+offset_bottom = 306.00922
+
+[node name="Menu" type="Button" parent="VBoxContainer" unique_id=2141986207]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
+text = "Menu"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=620763456]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
+text = "Quit"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1715220957]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1114896900]
+offset_right = 1728.0
+offset_bottom = 975.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_hbypc")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1631705065]
+
+[connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

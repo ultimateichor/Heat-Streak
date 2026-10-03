@@ -11,6 +11,7 @@ var last_aim_angle : float = 0.0
 @export var maxHealth = 100
 var currentHealth = -1
 var damageTaken
+@onready var Pause: Control = $"../CanvasLayer/Pause"
 
 var target_angle = rotation
 
@@ -99,6 +100,17 @@ func _physics_process(delta: float) -> void:
 		_transform()
 		pass
 	
+	if Input.is_action_just_pressed("Pause"):
+		Pause.modulate.a = 0.0
+		Pause.visible = true
+		Pause._get_button()
+		var tween = create_tween()
+		tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween.tween_property(Pause, "modulate:a", 1, 0.25)
+		await tween.finished
+		tween.kill()
+		get_tree().paused = !get_tree().paused
+	
 	move_and_slide()
 	
 	
@@ -131,8 +143,7 @@ func _take_damage(amount: int) -> void:
 func _die():
 	print("death is upon us")
 	GameManager._end_game()
-	queue_free()
-	#get_tree().call_deferred("change_scene_to_file", 'res://UI/Screens/Lose/Game_Over.tscn')
+	get_tree().call_deferred("change_scene_to_file", 'res://UI/Screens/Lose/Game_Over.tscn')
 
 func _equip_loadout(index: int) -> void:
 	if has_node("Loadouts"):

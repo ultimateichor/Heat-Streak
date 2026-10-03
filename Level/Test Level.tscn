@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://y7ecnx7ph5c1"]
 
+[ext_resource type="PackedScene" uid="uid://bdw8ajaey4fbu" path="res://UI/Screens/Win/UI.tscn" id="1_5haw7"]
 [ext_resource type="PackedScene" uid="uid://b8uwwjaheopus" path="res://Player/Player.tscn" id="1_cbsy4"]
 [ext_resource type="AudioStream" uid="uid://ds281wr1c3who" path="res://Namepending-one-v1.mp3" id="2_e18lo"]
 [ext_resource type="PackedScene" uid="uid://c8gb4vjrbtw41" path="res://Enemies/enemy.tscn" id="3_y7fgq"]
+[ext_resource type="PackedScene" uid="uid://cuy3u5plsjk5n" path="res://UI/Screens/Pause/Pause.tscn" id="4_jgor1"]
+[ext_resource type="PackedScene" uid="uid://dv6it8qmro0jd" path="res://Enemies/spawn_point.tscn" id="5_ul0cs"]
 
 [node name="Node2D" type="Node2D" unique_id=180366170]
+
+[node name="UI" parent="." unique_id=113216334 instance=ExtResource("1_5haw7")]
 
 [node name="CharacterBody2D" parent="." unique_id=1601155827 instance=ExtResource("1_cbsy4")]
 position = Vector2(444, 106)
@@ -12,6 +17,7 @@ position = Vector2(444, 106)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1972800559]
 stream = ExtResource("2_e18lo")
 autoplay = true
+bus = &"SFX"
 parameters/looping = true
 
 [node name="Enemy" parent="." unique_id=1825160351 instance=ExtResource("3_y7fgq")]
@@ -38,3 +44,34 @@ position = Vector2(1151, 540)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=235416842]
 position = Vector2(576, 324)
 zoom = Vector2(0.52, 0.52)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2082724338]
+follow_viewport_enabled = true
+
+[node name="Pause" parent="CanvasLayer" unique_id=358658097 instance=ExtResource("4_jgor1")]
+visible = false
+
+[node name="SpawnPoint" parent="." unique_id=1048712066 instance=ExtResource("5_ul0cs")]
+position = Vector2(-421, 33)
+
+[node name="SpawnPoint2" parent="." unique_id=268461865 instance=ExtResource("5_ul0cs")]
+position = Vector2(-215, 725)
+
+[node name="SpawnPoint3" parent="." unique_id=981477135 instance=ExtResource("5_ul0cs")]
+position = Vector2(832, 879)
+
+[node name="SpawnPoint4" parent="." unique_id=703862258 instance=ExtResource("5_ul0cs")]
+position = Vector2(1381, 437)
+
+[node name="SpawnPoint5" parent="." unique_id=310748183 instance=ExtResource("5_ul0cs")]
+position = Vector2(1387, 40)
+
+[node name="SpawnPoint6" parent="." unique_id=544447307 instance=ExtResource("5_ul0cs")]
+position = Vector2(1123, -175)
+
+[node name="Timer" type="Timer" parent="." unique_id=284873298]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://cuy3u5plsjk5n"]
+
+[ext_resource type="Script" uid="uid://cc0sim427vcv5" path="res://UI/Screens/Pause/pause.gd" id="1_alh12"]
+[ext_resource type="Script" uid="uid://c7y65rmuf5qeu" path="res://UI/fadeIn.gd" id="3_djxvt"]
+[ext_resource type="PackedScene" uid="uid://vfotnmrfymy7" path="res://UI/Screens/Pause/Volume Slider.tscn" id="3_vg8fd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_djxvt"]
+font_size = 20
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcafx"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 578
+corner_radius_bottom_right = 1296
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8save"]
+bg_color = Color(0.7137255, 0, 0, 1)
+corner_radius_top_left = 514
+corner_radius_bottom_right = 346
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djxvt"]
+bg_color = Color(0.7137255, 0, 0, 1)
+corner_radius_top_left = 286
+corner_radius_bottom_right = 444
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_stwhn"]
+font_size = 20
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stwhn"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 232
+corner_radius_bottom_right = 226
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh318"]
+bg_color = Color(0.7137255, 0, 0, 1)
+corner_radius_top_left = 211
+corner_radius_bottom_right = 312
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8a6o3"]
+bg_color = Color(0.7137255, 0, 0, 1)
+corner_radius_top_left = 1613
+corner_radius_bottom_right = 431
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_fh318"]
+font_size = 20
+font_color = Color(1, 0, 0, 1)
+
+[node name="Pause" type="Control" unique_id=358658097]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+script = ExtResource("1_alh12")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1705214632]
+scale = Vector2(0.5333334, 0.3995885)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1095323371]
+visible = false
+scale = Vector2(1.8000001, 1.3541666)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1373871359]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -144.0
+offset_right = 198.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="Start" type="Button" parent="VBoxContainer2" unique_id=719140771]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Resume"
+
+[node name="Volume" type="Button" parent="VBoxContainer2" unique_id=1054891881]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Volume"
+
+[node name="Menu" type="Button" parent="VBoxContainer2" unique_id=139075269]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Menu"
+
+[node name="Quit" type="Button" parent="VBoxContainer2" unique_id=1202941590]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=968912767]
+visible = false
+layout_mode = 0
+offset_left = 380.0
+offset_top = 194.0
+offset_right = 856.0
+offset_bottom = 446.0
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=73538509]
+layout_mode = 2
+text = "Master"
+label_settings = SubResource("LabelSettings_djxvt")
+
+[node name="Volume_Slider" parent="VBoxContainer" unique_id=1267410820 instance=ExtResource("3_vg8fd")]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_mcafx")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_8save")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_djxvt")
+bus_name = "Master"
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=285015381]
+layout_mode = 2
+text = "SFX"
+label_settings = SubResource("LabelSettings_stwhn")
+
+[node name="Volume_Slider2" parent="VBoxContainer" unique_id=163288485 instance=ExtResource("3_vg8fd")]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_stwhn")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_fh318")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_8a6o3")
+bus_name = "SFX"
+
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=2112008970]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Music"
+label_settings = SubResource("LabelSettings_fh318")
+
+[node name="Volume_Slider3" parent="VBoxContainer" unique_id=1641617325 instance=ExtResource("3_vg8fd")]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_stwhn")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_fh318")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_8a6o3")
+bus_name = "SFX"
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1333378682]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Apply"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1558360673]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=358296062]
+offset_right = 1730.0
+offset_bottom = 973.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_djxvt")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="VBoxContainer2/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Volume" to="." method="_on_volume_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://tqydvp0p12qc"]
+
+[node name="Lose" type="Control" unique_id=676809625]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=492315980]
+position = Vector2(576, 324)
+scale = Vector2(1.8, 1.35)
+
+[node name="Label" type="Label" parent="." unique_id=550011092]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 254.0
+offset_right = 301.38
+offset_bottom = 277.0
+rotation = 0.39618975
+scale = Vector2(1.51, 1.51)
+text = "Your didnt it"
