@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bdw8ajaey4fbu"]
 
-[ext_resource type="Script" uid="uid://cbmj5kkvdxyox" path="res://UI/Screens/Win/UI.gd" id="1_b3bc3"]
+[ext_resource type="Script" uid="uid://cbmj5kkvdxyox" path="res://UI/UI.gd" id="1_b3bc3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p2yh8"]
 font_size = 50
