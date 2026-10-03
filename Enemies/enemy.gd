@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var maxEnemyHealth = 50
+@export var maxEnemyHealth = 30
 var enemyHealth
 @export var enemyDamage = 25
 

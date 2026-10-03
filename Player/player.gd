@@ -16,6 +16,7 @@ var damageTaken
 var target_angle = rotation
 
 @export var isRobot = true
+@onready var UI = $"../UI"
 
 var primaryWeapon : Weapon
 var secondaryWeapon : Weapon
@@ -137,6 +138,7 @@ func _on_rotation_timer_timeout() -> void:
 func _take_damage(amount: int) -> void:
 	currentHealth -= amount
 	print(currentHealth)
+	UI._decrease_health(currentHealth)
 	if currentHealth <= 0:
 		_die()
 

@@ -9,10 +9,10 @@
 
 [node name="Node2D" type="Node2D" unique_id=180366170]
 
-[node name="UI" parent="." unique_id=113216334 instance=ExtResource("1_5haw7")]
-
-[node name="CharacterBody2D" parent="." unique_id=1601155827 instance=ExtResource("1_cbsy4")]
+[node name="Player" parent="." unique_id=1601155827 instance=ExtResource("1_cbsy4")]
 position = Vector2(444, 106)
+
+[node name="UI" parent="." unique_id=113216334 instance=ExtResource("1_5haw7")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1972800559]
 stream = ExtResource("2_e18lo")

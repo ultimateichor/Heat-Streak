@@ -5,227 +5,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_p2yh8"]
 font_size = 50
 
-[sub_resource type="LabelSettings" id="LabelSettings_acui1"]
-font_size = 20
-font_color = Color(1, 0, 0, 1)
-outline_color = Color(1, 0, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_af25e"]
+font_size = 50
 
-[sub_resource type="LabelSettings" id="LabelSettings_824b7"]
-font_size = 26
-outline_size = 3
-outline_color = Color(1, 0, 0, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2jerp"]
-region = Rect2(1344, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nxoi0"]
-region = Rect2(1408, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jf3kf"]
-region = Rect2(1472, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wtdy7"]
-region = Rect2(1536, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rbg2s"]
-region = Rect2(1600, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gokaw"]
-region = Rect2(1664, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4o5pq"]
-region = Rect2(1728, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v25sk"]
-region = Rect2(1792, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t0bwl"]
-region = Rect2(1856, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8saf6"]
-region = Rect2(1920, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mfg5i"]
-region = Rect2(1984, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e707p"]
-region = Rect2(640, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6q2ik"]
-region = Rect2(704, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t31p1"]
-region = Rect2(768, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kncd2"]
-region = Rect2(832, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1sm7k"]
-region = Rect2(896, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xtxff"]
-region = Rect2(960, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yflil"]
-region = Rect2(1024, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rjxvo"]
-region = Rect2(1088, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uk6e0"]
-region = Rect2(1152, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_idhk4"]
-region = Rect2(1216, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vh35o"]
-region = Rect2(1280, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f1fl4"]
-region = Rect2(0, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqf55"]
-region = Rect2(64, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_byuxr"]
-region = Rect2(128, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d050y"]
-region = Rect2(192, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qgmx8"]
-region = Rect2(256, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vx7wu"]
-region = Rect2(320, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r2vy3"]
-region = Rect2(384, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qhxh2"]
-region = Rect2(448, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_017wa"]
-region = Rect2(512, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_npmjx"]
-region = Rect2(576, 0, 64, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ahg1b"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2jerp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nxoi0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jf3kf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wtdy7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rbg2s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gokaw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4o5pq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v25sk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t0bwl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8saf6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mfg5i")
-}],
-"loop": 0,
-"name": &"LoseLife1",
-"speed": 20.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e707p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6q2ik")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t31p1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kncd2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1sm7k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xtxff")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yflil")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rjxvo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uk6e0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_idhk4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vh35o")
-}],
-"loop": 0,
-"name": &"LoseLife2",
-"speed": 20.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f1fl4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jqf55")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_byuxr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d050y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qgmx8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vx7wu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r2vy3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qhxh2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_017wa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_npmjx")
-}],
-"loop": 0,
-"name": &"LoseLife3",
-"speed": 20.0
-}]
-
-[node name="UI" type="Control" unique_id=113216334 node_paths=PackedStringArray("winTimer")]
+[node name="UI" type="Control" unique_id=113216334 node_paths=PackedStringArray("winTimer", "health")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -236,6 +19,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_b3bc3")
 winTimer = NodePath("CanvasLayer/WinTimer")
+health = NodePath("CanvasLayer/HealthCounter")
 
 [node name="Timer" type="Timer" parent="." unique_id=1783964300]
 autostart = true
@@ -250,46 +34,12 @@ offset_bottom = 68.0
 text = "1"
 label_settings = SubResource("LabelSettings_p2yh8")
 
-[node name="PressSpace" type="Label" parent="CanvasLayer" unique_id=263533455]
-visible = false
-anchors_preset = -1
-anchor_right = 0.023000002
-anchor_bottom = 0.024
-offset_left = 1057.0
-offset_top = 569.0
-offset_right = 1131.256
-offset_bottom = 573.672
-text = "Press Space"
-label_settings = SubResource("LabelSettings_acui1")
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1665256253]
-visible = false
-position = Vector2(164, 81)
-scale = Vector2(3.060658, 3.060658)
-
-[node name="livesCounter" type="Label" parent="CanvasLayer/Sprite2D" unique_id=2116107776]
-visible = false
-offset_left = -6.611191
-offset_top = 6.611191
-offset_right = 33.38881
-offset_bottom = 42.61119
-label_settings = SubResource("LabelSettings_824b7")
-
-[node name="HealthBarContainer" type="Control" parent="CanvasLayer/Sprite2D" unique_id=582101251]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 7.514736
-offset_top = 29.405443
-offset_right = 47.514736
-offset_bottom = 69.40544
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="HealthBar" type="AnimatedSprite2D" parent="CanvasLayer/Sprite2D/HealthBarContainer" unique_id=559355352]
-unique_name_in_owner = true
-visible = false
-sprite_frames = SubResource("SpriteFrames_ahg1b")
-animation = &"LoseLife3"
+[node name="HealthCounter" type="Label" parent="CanvasLayer" unique_id=854962522]
+offset_left = 12.0
+offset_top = 53.0
+offset_right = 60.0
+offset_bottom = 92.0
+text = "100"
+label_settings = SubResource("LabelSettings_af25e")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

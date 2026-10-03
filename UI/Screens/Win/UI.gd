@@ -1,7 +1,9 @@
 extends Control
 
 @export var winTimer : Label
-@export var counter = 10
+@export var health : Label
+@export var counter = 40
+@export var healthCounter = 100
 
 @onready var timer = $Timer
 
@@ -26,6 +28,8 @@ func _process(_delta: float) -> void:
 		
 #	$livesCounter.text = str(livesCounter)
 
+func _decrease_health(amount: int):
+	health.text = str(amount)
 
 func _on_timer_timeout() -> void:
 	counter -= 1

@@ -16,5 +16,5 @@ func _spawn_enemy() -> void:
 	enemy.global_position = $".".global_position
 
 func _on_spawn_timer_timeout() -> void:
-	$SpawnTimer.wait_time -= 0.5
+	$SpawnTimer.wait_time -= 0.25
 	_spawn_enemy()
