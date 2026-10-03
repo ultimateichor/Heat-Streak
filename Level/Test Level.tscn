@@ -7,29 +7,34 @@
 [node name="Node2D" type="Node2D" unique_id=180366170]
 
 [node name="CharacterBody2D" parent="." unique_id=1601155827 instance=ExtResource("1_cbsy4")]
-position = Vector2(551, 248)
+position = Vector2(444, 106)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1972800559]
 stream = ExtResource("2_e18lo")
+autoplay = true
 parameters/looping = true
 
 [node name="Enemy" parent="." unique_id=1825160351 instance=ExtResource("3_y7fgq")]
-position = Vector2(430, 380)
+position = Vector2(137, 453)
 
 [node name="Enemy2" parent="." unique_id=1784527774 instance=ExtResource("3_y7fgq")]
-position = Vector2(835, 537)
+position = Vector2(942, 635)
 
 [node name="Enemy3" parent="." unique_id=1230733697 instance=ExtResource("3_y7fgq")]
-position = Vector2(464, 544)
+position = Vector2(263, 673)
 
 [node name="Enemy4" parent="." unique_id=1041891596 instance=ExtResource("3_y7fgq")]
-position = Vector2(1074, 398)
+position = Vector2(1213, 310)
 
 [node name="Enemy5" parent="." unique_id=1488742181 instance=ExtResource("3_y7fgq")]
-position = Vector2(718, 571)
+position = Vector2(624, 681)
 
 [node name="Enemy6" parent="." unique_id=580899055 instance=ExtResource("3_y7fgq")]
-position = Vector2(941, 269)
+position = Vector2(1080, 181)
 
 [node name="Enemy7" parent="." unique_id=1101833908 instance=ExtResource("3_y7fgq")]
-position = Vector2(849, 416)
+position = Vector2(1151, 540)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=235416842]
+position = Vector2(576, 324)
+zoom = Vector2(0.52, 0.52)

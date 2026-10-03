@@ -57,13 +57,15 @@ func _physics_process(delta: float) -> void:
 	if using_controller:
 		if using_controller_right:
 			target_angle = last_aim_angle
-			rotation = lerp_angle(rotation, target_angle, TURN_SPEED * delta)
+			$RotationTimer.stop()
 		elif !$RotationTimer.time_left:
 			$RotationTimer.start()
 		if useleftrotation and !using_controller_right:
 			if direction.length() >0.3:
 				target_angle = direction.angle()
 			rotation = lerp_angle(rotation, target_angle, LTURN_SPEED * delta)
+		else:
+			rotation = lerp_angle(rotation, target_angle, TURN_SPEED * delta)
 	else:
 		look_at(get_global_mouse_position())
 	#Shooting

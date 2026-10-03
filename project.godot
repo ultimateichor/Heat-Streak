@@ -23,6 +23,11 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://dbwv252d4afo4"
 
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 Player=""
