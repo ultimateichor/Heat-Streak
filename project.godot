@@ -37,6 +37,7 @@ window/stretch/mode="canvas_items"
 Player=""
 Enemy=""
 Melee=""
+UI=""
 
 [gui]
 

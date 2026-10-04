@@ -12,6 +12,8 @@ size = Vector2(14, 58)
 [node name="Enemy" type="CharacterBody2D" unique_id=1825160351 groups=["Enemy", "Melee"]]
 motion_mode = 1
 script = ExtResource("1_4gyqm")
+enemyDamage = 20
+SPEED = 225
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870279104]
 shape = SubResource("RectangleShape2D_q3lat")

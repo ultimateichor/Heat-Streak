@@ -9,12 +9,16 @@ var damageTime = true
 
 var player: CharacterBody2D
 
+var UI: Control 
+
 func _ready() -> void:
+	UI = get_tree().get_first_node_in_group("UI")
 	player = get_tree().get_first_node_in_group("Player")
 	enemyHealth = maxEnemyHealth
 
 func _physics_process(delta: float) -> void:
 	if not player:
+		player = get_tree().get_first_node_in_group("Player")
 		return
 
 	#chases player
@@ -34,11 +38,13 @@ func _physics_process(delta: float) -> void:
 	
 	
 func _enemy_take_damage(damage: int) -> void:
-	enemyHealth -= damage
+	if enemyHealth > 0:
+		enemyHealth -= damage
 	if enemyHealth <= 0:
 		_enemy_die()
 		
 func _enemy_die() -> void:
+	UI.enemiesNeeded -= 1
 	queue_free()
 #Stops movement and ability to damage until timeout
 func _on_damage_timer_timeout() -> void:

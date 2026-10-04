@@ -13,13 +13,14 @@ var useHim = false
 
 var highScore : int
 
-const ROBOT_SCENE := "res://Player/Robot.tscn"
+const ROBOT_SCENE := "res://Player/Player.tscn"
 const VEHICLE_SCENES := [
-	"res://Player/Vehicles/Car.tscn",
+	"res://Player/Vehicles/Car.tscn","res://Player/Vehicles/Heli.tscn","res://Player/Vehicles/Heli.tscn","res://Player/Vehicles/Heli.tscn"
 ]
 
-var unlocked_vehicles: Array[int] = [0]
+var unlocked_vehicles: Array[int] = [0,1]
 var selected_vehicle := 0
+
 
 func _process(_delta: float) -> void:
 	pass

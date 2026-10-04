@@ -20,12 +20,14 @@ var target_angle = rotation
 
 var primaryWeapon : Weapon
 var secondaryWeapon : Weapon
-
+var firePrimary = false
+var fireSecondary = false
 
 func _ready() -> void:
 	GameManager.player = self
 	if currentHealth < 0:
 		currentHealth = maxHealth
+	GameManager.selected_vehicle = 1
 	_equip_loadout(GameManager.selected_vehicle)
 	print(currentHealth)
 
@@ -71,30 +73,36 @@ func _physics_process(delta: float) -> void:
 	else:
 		look_at(get_global_mouse_position())
 	#Shooting
-	if Input.is_action_pressed("Shoot Primary"):
+	if Input.is_action_pressed("Shoot Primary") and fireSecondary == false:
+		firePrimary = true
 		_shoot_primary()
+	if Input.is_action_just_released("Shoot Primary"):
+		firePrimary = false
 		
-	if Input.is_action_pressed("Shoot Secondary"):
+	if Input.is_action_pressed("Shoot Secondary") and firePrimary == false:
+		fireSecondary = true
 		_shoot_secondary()
+	if Input.is_action_just_released("Shoot Secondary"):
+		fireSecondary = false
 	
 	if Input.is_action_just_pressed("Car"):
 		if !GameManager.selected_vehicle == 0:
-			GameManager.select_vehicle(0)
+			GameManager._select_vehicle(0)
 			_equip_loadout(GameManager.selected_vehicle)
 	elif Input.is_action_just_pressed("Helicopter"):
 		if GameManager.unlocked_vehicles.has(1):
 			if !GameManager.selected_vehicle == 1:
-				GameManager.select_vehicle(1)
+				GameManager._select_vehicle(1)
 				_equip_loadout(GameManager.selected_vehicle)
 	elif Input.is_action_just_pressed("Tank"):
 		if GameManager.unlocked_vehicles.has(2):
 			if !GameManager.selected_vehicle == 2:
-				GameManager.select_vehicle(2)
+				GameManager._select_vehicle(2)
 				_equip_loadout(GameManager.selected_vehicle)
 	elif Input.is_action_just_pressed("Jet"):
 		if GameManager.unlocked_vehicles.has(3):
 			if !GameManager.selected_vehicle == 3:
-				GameManager.select_vehicle(3)
+				GameManager._select_vehicle(3)
 				_equip_loadout(GameManager.selected_vehicle)
 	
 	if Input.is_action_just_pressed("Transform"):
@@ -102,15 +110,15 @@ func _physics_process(delta: float) -> void:
 		pass
 	
 	if Input.is_action_just_pressed("Pause"):
+		get_tree().paused = true
 		Pause.modulate.a = 0.0
 		Pause.visible = true
 		Pause._get_button()
 		var tween = create_tween()
+		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 		tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-		tween.tween_property(Pause, "modulate:a", 1, 0.25)
-		await tween.finished
-		tween.kill()
-		get_tree().paused = !get_tree().paused
+		tween.tween_property(Pause, "modulate:a", 1.0, 0.25)
+		
 	
 	move_and_slide()
 	
@@ -169,20 +177,22 @@ func _transform() -> void:
 	if isRobot:
 		if GameManager.unlocked_vehicles.is_empty():
 			return
-		_swap_to(GameManager.Vehicle_Scenes[GameManager.selected_vehicle])
+		_swap_to(GameManager.VEHICLE_SCENES[GameManager.selected_vehicle])
 	else:
 		_swap_to(GameManager.ROBOT_SCENE)
 
 func _swap_to(path: String) -> void:
 	var newForm: Player = load(path).instantiate()
 	newForm.global_position = global_position
-	newForm.rotaion = rotation
+	newForm.rotation = rotation
 	newForm.currentHealth = currentHealth
 	newForm.using_controller = using_controller
 	
 	set_physics_process(false)
 	hide()
 	$Area2D.set_deferred("monitorable", false)
+	
+	get_parent().add_child(newForm)
 	
 	queue_free()
 		

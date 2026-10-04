@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b8uwwjaheopus"]
 
 [ext_resource type="Script" uid="uid://bupse5x8f21tf" path="res://Player/player.gd" id="1_q3lat"]
+[ext_resource type="Texture2D" uid="uid://c64kkn6rnry7d" path="res://Assets/sddefault.jpg" id="2_ddoul"]
 [ext_resource type="Texture2D" uid="uid://c6ufx72upq430" path="res://Player/Screenshot 2025-07-21 132008.png" id="2_tok1r"]
 [ext_resource type="PackedScene" uid="uid://ctjxhfrs5am37" path="res://Player/Weapons/base_weapon.tscn" id="3_tok1r"]
 
@@ -10,6 +11,11 @@ size = Vector2(70, 80)
 [node name="Player" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_q3lat")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1381562560]
+position = Vector2(69.49999, 0)
+scale = Vector2(0.11718748, 0.012500001)
+texture = ExtResource("2_ddoul")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=804397636]
 shape = SubResource("RectangleShape2D_af25e")
@@ -39,6 +45,15 @@ texture = ExtResource("2_tok1r")
 [node name="Primary" parent="Loadouts/CarLoadout" unique_id=1133059679 instance=ExtResource("3_tok1r")]
 
 [node name="Secondary" parent="Loadouts/CarLoadout" unique_id=651729886 instance=ExtResource("3_tok1r")]
+
+[node name="HeliLoadout" type="Node2D" parent="Loadouts" unique_id=737173580]
+
+[node name="Primary" parent="Loadouts/HeliLoadout" unique_id=789182644 instance=ExtResource("3_tok1r")]
+fire_rate = 0.6
+damage = 35
+automatic = false
+
+[node name="Secondary" parent="Loadouts/HeliLoadout" unique_id=768453231 instance=ExtResource("3_tok1r")]
 
 [connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

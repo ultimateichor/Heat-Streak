@@ -8,7 +8,7 @@ font_size = 50
 [sub_resource type="LabelSettings" id="LabelSettings_af25e"]
 font_size = 50
 
-[node name="UI" type="Control" unique_id=113216334 node_paths=PackedStringArray("winTimer", "health")]
+[node name="UI" type="Control" unique_id=113216334 node_paths=PackedStringArray("winCounter", "health")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,15 +18,13 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_b3bc3")
-winTimer = NodePath("CanvasLayer/WinTimer")
+winCounter = NodePath("CanvasLayer/WinCounter")
 health = NodePath("CanvasLayer/HealthCounter")
-
-[node name="Timer" type="Timer" parent="." unique_id=1783964300]
-autostart = true
+counter = 60
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1546753279]
 
-[node name="WinTimer" type="Label" parent="CanvasLayer" unique_id=1809231286]
+[node name="WinCounter" type="Label" parent="CanvasLayer" unique_id=1809231286]
 offset_left = 14.0
 offset_top = -1.0
 offset_right = 54.0
@@ -41,5 +39,3 @@ offset_right = 60.0
 offset_bottom = 92.0
 text = "100"
 label_settings = SubResource("LabelSettings_af25e")
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://7odjdwygqx2a"]
 
-[ext_resource type="Script" uid="uid://bupse5x8f21tf" path="res://Player/player.gd" id="1_q8l8b"]
+[ext_resource type="Script" uid="uid://du41ippeq1bha" path="res://Player/Vehicles/heli.gd" id="1_7juqt"]
 [ext_resource type="Texture2D" uid="uid://c6ufx72upq430" path="res://Player/Screenshot 2025-07-21 132008.png" id="2_o0qvf"]
-[ext_resource type="PackedScene" uid="uid://ctjxhfrs5am37" path="res://Player/Weapons/base_weapon.tscn" id="3_dkt7b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(70, 80)
 
 [node name="Player" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
+z_index = 10
+collision_layer = 2
+collision_mask = 2
 motion_mode = 1
-script = ExtResource("1_q8l8b")
-SPEED = 650.0
-TURN_SPEED = 7.0
+script = ExtResource("1_7juqt")
+SPEED = 800.0
+isRobot = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=804397636]
 shape = SubResource("RectangleShape2D_af25e")
@@ -22,6 +24,8 @@ shape = SubResource("RectangleShape2D_af25e")
 wait_time = 3.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=235330107 groups=["Player"]]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=510006997]
 shape = SubResource("RectangleShape2D_af25e")
@@ -30,19 +34,9 @@ shape = SubResource("RectangleShape2D_af25e")
 wait_time = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=573628744]
-position = Vector2(-2.842171e-14, -0.058140863)
-scale = Vector2(0.81395346, 0.81513995)
+position = Vector2(249.99998, -0.058140863)
+scale = Vector2(6.6279063, 0.81513995)
 texture = ExtResource("2_o0qvf")
-
-[node name="Loadouts" type="Node2D" parent="." unique_id=1580582265]
-
-[node name="CarLoadout" type="Node2D" parent="Loadouts" unique_id=584800298]
-
-[node name="Primary" parent="Loadouts/CarLoadout" unique_id=1133059679 instance=ExtResource("3_dkt7b")]
-fire_rate = 0.75
-damage = 35
-
-[node name="Secondary" parent="Loadouts/CarLoadout" unique_id=651729886 instance=ExtResource("3_dkt7b")]
 
 [connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
