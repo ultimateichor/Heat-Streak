@@ -25,7 +25,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://Level/Test Level.tscn")
+	get_tree().change_scene_to_file("res://UI/Screens/MainMenu/manual.tscn")
 	
 
 
@@ -44,3 +44,6 @@ func _on_button_pressed() -> void:
 	$VBoxContainer2.visible = true
 	$VBoxContainer.visible = false
 	_get_button()
+
+
+	
