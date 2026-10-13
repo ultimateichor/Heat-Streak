@@ -38,6 +38,9 @@ offset_bottom = 176.0
 text = "Move: WASD/ Left Stick
 Shoot Primary: Left click/ Right Trigger
 Shoot Secondary: Right click/ Left Trigger
-Transform: Shift/ Left Bumper"
+Transform: Shift/ Left Bumper
+Helicopter lets you fly above enemies
+
+Kill all enemies to win"
 
 [connection signal="pressed" from="VBoxContainer2/Continue" to="." method="_on_continue_pressed"]

@@ -4,9 +4,11 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_p2yh8"]
 font_size = 50
+font_color = Color(1, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_af25e"]
 font_size = 50
+font_color = Color(0, 1, 0, 1)
 
 [node name="UI" type="Control" unique_id=113216334 node_paths=PackedStringArray("winCounter", "health")]
 layout_mode = 3
@@ -29,7 +31,7 @@ offset_left = 14.0
 offset_top = -1.0
 offset_right = 54.0
 offset_bottom = 68.0
-text = "1"
+text = "Enemies Left:"
 label_settings = SubResource("LabelSettings_p2yh8")
 
 [node name="HealthCounter" type="Label" parent="CanvasLayer" unique_id=854962522]
@@ -37,5 +39,5 @@ offset_left = 12.0
 offset_top = 53.0
 offset_right = 60.0
 offset_bottom = 92.0
-text = "100"
+text = "Health: 100"
 label_settings = SubResource("LabelSettings_af25e")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmv1vf61ea1bt" path="res://spawn_point.gd" id="1_1n450"]
 [ext_resource type="PackedScene" uid="uid://c8gb4vjrbtw41" path="res://Enemies/enemy.tscn" id="2_t8qs3"]
+[ext_resource type="Texture2D" uid="uid://c64kkn6rnry7d" path="res://Assets/sddefault.jpg" id="3_t8qs3"]
 
 [node name="SpawnPoint" type="Node2D" unique_id=1048712066]
 script = ExtResource("1_1n450")
@@ -10,5 +11,9 @@ enemy_scene = ExtResource("2_t8qs3")
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1625823409]
 wait_time = 5.0
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1161495377]
+scale = Vector2(0.0958333, 0.09583333)
+texture = ExtResource("3_t8qs3")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
