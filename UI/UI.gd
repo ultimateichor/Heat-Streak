@@ -12,12 +12,12 @@ var enemiesNeeded = 80
 var winCheck = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	winCounter.text = ("Enemies Left: " + str(enemiesNeeded))
+	winCounter.text = str(enemiesNeeded)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	winCounter.text = ("Enemies Left: " + str(enemiesNeeded))
+	winCounter.text = str(enemiesNeeded)
 	if enemiesNeeded == 0 and winCheck == false:
 		winCheck = true
 		winCounter.text = str("Win")
@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 #	$livesCounter.text = str(livesCounter)
 
 func _decrease_health(amount: int):
-	health.text = ("Health: " + str(amount))
+	health.text = str(amount)
 
 
 	

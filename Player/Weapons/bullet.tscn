@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://crycqqdbftrbe"]
 
 [ext_resource type="Script" uid="uid://e4hspkakk5m4" path="res://Player/Weapons/bullet.gd" id="1_v7oki"]
+[ext_resource type="Texture2D" uid="uid://d2ooa8mdilak6" path="res://Assets/New Piskel (1).png" id="2_5hclu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_af25e"]
-
-[sub_resource type="DrawableTexture2D" id="DrawableTexture2D_mfog4"]
 
 [node name="Bullet" type="Area2D" unique_id=1326991832]
 script = ExtResource("1_v7oki")
@@ -13,10 +12,10 @@ script = ExtResource("1_v7oki")
 shape = SubResource("CircleShape2D_af25e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=659599438]
-position = Vector2(-2.3841858e-07, 1.1920929e-07)
-rotation = 3.1415927
-scale = Vector2(0.27749753, 0.27084202)
-texture = SubResource("DrawableTexture2D_mfog4")
+position = Vector2(-4, -4.7683716e-07)
+rotation = 1.5707964
+scale = Vector2(1.3098754, 1.243372)
+texture = ExtResource("2_5hclu")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

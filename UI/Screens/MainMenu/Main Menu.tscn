@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cgxxkqk5e0xti" path="res://UI/Screens/MainMenu/main_menu.gd" id="1_dvdtt"]
 [ext_resource type="PackedScene" uid="uid://vfotnmrfymy7" path="res://UI/Screens/Pause/Volume Slider.tscn" id="2_ixx8w"]
-[ext_resource type="Texture2D" uid="uid://c64kkn6rnry7d" path="res://Assets/sddefault.jpg" id="2_kdxb7"]
+[ext_resource type="Texture2D" uid="uid://b5xwom2y1r0xs" path="res://Assets/New Piskel.png" id="2_kdxb7"]
 [ext_resource type="Script" uid="uid://c7y65rmuf5qeu" path="res://UI/fadeIn.gd" id="3_nnhq3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nnhq3"]
@@ -69,8 +69,8 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("1_dvdtt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2132439429]
-position = Vector2(385.66666, 215)
-scale = Vector2(1.2052084, 0.90416664)
+position = Vector2(384, 260.16666)
+scale = Vector2(3.112903, 2.4638364)
 texture = ExtResource("2_kdxb7")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=187169505]

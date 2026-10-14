@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ds257abgq0nss"]
 
-[ext_resource type="Texture2D" uid="uid://c64kkn6rnry7d" path="res://Assets/sddefault.jpg" id="1_t7mn2"]
 [ext_resource type="Script" uid="uid://jldfsysema8q" path="res://UI/Screens/MainMenu/manual.gd" id="1_xy4qu"]
+[ext_resource type="Texture2D" uid="uid://b5xwom2y1r0xs" path="res://Assets/New Piskel.png" id="2_xy4qu"]
 
 [node name="Manual" type="Control" unique_id=1671810715]
 layout_mode = 3
@@ -13,9 +13,9 @@ grow_vertical = 2
 script = ExtResource("1_xy4qu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=560084798]
-position = Vector2(577.99994, 325.99997)
-scale = Vector2(1.8062499, 1.3666666)
-texture = ExtResource("1_t7mn2")
+position = Vector2(576.0063, 347.03333)
+scale = Vector2(4.725756, 3.282704)
+texture = ExtResource("2_xy4qu")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=2010754212]
 layout_mode = 0
@@ -31,16 +31,13 @@ text = "Continue"
 
 [node name="Label" type="Label" parent="." unique_id=1393325273]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 11.0
-offset_right = 567.0
-offset_bottom = 176.0
+offset_left = 488.0
+offset_top = 443.0
+offset_right = 1039.0
+offset_bottom = 608.0
 text = "Move: WASD/ Left Stick
 Shoot Primary: Left click/ Right Trigger
 Shoot Secondary: Right click/ Left Trigger
-Transform: Shift/ Left Bumper
-Helicopter lets you fly above enemies
-
-Kill all enemies to win"
+Transform: Shift/ Left Bumper"
 
 [connection signal="pressed" from="VBoxContainer2/Continue" to="." method="_on_continue_pressed"]
