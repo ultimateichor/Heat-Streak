@@ -27,9 +27,9 @@ func _ready() -> void:
 	GameManager.player = self
 	if currentHealth < 0:
 		currentHealth = maxHealth
-	GameManager.selected_vehicle = 1
+	target_angle = rotation
+	last_aim_angle = rotation
 	_equip_loadout(GameManager.selected_vehicle)
-	print(currentHealth)
 
 #checks current input method
 func _input(event: InputEvent) -> void:
@@ -49,29 +49,7 @@ func _physics_process(delta: float) -> void:
 	).limit_length(1.0)
 	_move(direction, delta)
 	#Rotation
-	var aim := Input.get_vector("Look Left", "Look Right", "Look Up", "Look Down")
-	#print(direction)
-	if aim.length() > 0.3:
-		using_controller_right = true
-		useleftrotation = false
-		last_aim_angle = aim.angle()
-	else:
-		using_controller_right = false
-
-	if using_controller:
-		if using_controller_right:
-			target_angle = last_aim_angle
-			$RotationTimer.stop()
-		elif !$RotationTimer.time_left:
-			$RotationTimer.start()
-		if useleftrotation and !using_controller_right:
-			if direction.length() >0.3:
-				target_angle = direction.angle()
-			rotation = lerp_angle(rotation, target_angle, LTURN_SPEED * delta)
-		else:
-			rotation = lerp_angle(rotation, target_angle, TURN_SPEED * delta)
-	else:
-		look_at(get_global_mouse_position())
+	_aim(direction, delta)
 	#Shooting
 	if Input.is_action_pressed("Shoot Primary") and fireSecondary == false:
 		firePrimary = true
@@ -129,6 +107,31 @@ func _move(direction: Vector2, delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
 		
+func _aim(direction: Vector2, delta: float) -> void:
+	var aim := Input.get_vector("Look Left", "Look Right", "Look Up", "Look Down")
+	#print(direction)
+	if aim.length() > 0.3:
+		using_controller_right = true
+		useleftrotation = false
+		last_aim_angle = aim.angle()
+	else:
+		using_controller_right = false
+
+	if using_controller:
+		if using_controller_right:
+			target_angle = last_aim_angle
+			$RotationTimer.stop()
+		elif !$RotationTimer.time_left:
+			$RotationTimer.start()
+		if useleftrotation and !using_controller_right:
+			if direction.length() >0.3:
+				target_angle = direction.angle()
+			rotation = lerp_angle(rotation, target_angle, LTURN_SPEED * delta)
+		else:
+			rotation = lerp_angle(rotation, target_angle, TURN_SPEED * delta)
+	else:
+		look_at(get_global_mouse_position())
+		
 	
 #Read the name
 func _shoot_primary():
@@ -143,7 +146,7 @@ func _on_rotation_timer_timeout() -> void:
 	useleftrotation = true
 
 #Takes the damage from enemies and calls die() if health is <= 0
-func _take_damage(amount: int) -> void:
+func _take_damage(amount: int, type: int) -> void:
 	currentHealth -= amount
 	print(currentHealth)
 	UI._decrease_health(currentHealth)
@@ -183,7 +186,7 @@ func _transform() -> void:
 
 func _swap_to(path: String) -> void:
 	var newForm: Player = load(path).instantiate()
-	newForm.global_position = global_position
+	newForm.position = position
 	newForm.rotation = rotation
 	newForm.currentHealth = currentHealth
 	newForm.using_controller = using_controller
@@ -191,8 +194,8 @@ func _swap_to(path: String) -> void:
 	set_physics_process(false)
 	hide()
 	$Area2D.set_deferred("monitorable", false)
-	
+	$CollisionShape2D.set_deferred("disabled", true)
+
 	get_parent().add_child(newForm)
-	
 	queue_free()
 		

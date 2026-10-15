@@ -2,6 +2,7 @@ extends Area2D
 
 @export var damage := 10
 @export var lifetime := 10.0
+var type = 2
 
 
 var velocity = Vector2.ZERO
@@ -19,7 +20,7 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
 		if area.get_parent().currentHealth > 0:
-			area.get_parent()._take_damage(damage)
+			area.get_parent()._take_damage(damage, type)
 			queue_free()
 
 

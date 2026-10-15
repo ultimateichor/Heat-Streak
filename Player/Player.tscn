@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(70, 80)
 
-[node name="Player2" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_q3lat")
 

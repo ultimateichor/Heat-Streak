@@ -10,11 +10,12 @@ size = Vector2(54, 58)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(14, 58)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1825160351 groups=["Enemy", "Melee"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=1825160351 groups=["Enemy"]]
 motion_mode = 1
 script = ExtResource("1_ius0x")
 bullet = ExtResource("2_hyijr")
 maxEnemyHealth = 40
+type = 2
 SPEED = 175
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870279104]
