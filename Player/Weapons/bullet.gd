@@ -7,8 +7,7 @@ extends Area2D
 var velocity = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	await get_tree().create_timer(10.0).timeout
-	queue_free()
+	pass
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,3 +21,7 @@ func _on_area_entered(area: Area2D) -> void:
 		if area.get_parent().enemyHealth > 0:
 			area.get_parent()._enemy_take_damage(damage)
 			queue_free()
+			
+func _on_body_entered(body: Node2D) -> void:
+	if !body.is_in_group("Enemy") and !body.is_in_group("Player"):
+		queue_free()

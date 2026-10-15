@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(70, 80)
 
-[node name="Player" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
+[node name="Player2" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_q3lat")
 
@@ -17,7 +17,7 @@ position = Vector2(69.49999, 0)
 scale = Vector2(0.11718748, 0.012500001)
 texture = ExtResource("2_ddoul")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=804397636]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=804397636 groups=["Player"]]
 shape = SubResource("RectangleShape2D_af25e")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=8602036]
@@ -27,7 +27,7 @@ wait_time = 3.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=235330107 groups=["Player"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=510006997]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=510006997 groups=["Player"]]
 shape = SubResource("RectangleShape2D_af25e")
 
 [node name="DamageTimer" type="Timer" parent="." unique_id=2050933388]

@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://bdw8ajaey4fbu" path="res://UI/UI.tscn" id="1_5haw7"]
 [ext_resource type="PackedScene" uid="uid://b8uwwjaheopus" path="res://Player/Player.tscn" id="1_cbsy4"]
 [ext_resource type="AudioStream" uid="uid://ds281wr1c3who" path="res://Namepending-one-v1.mp3" id="2_e18lo"]
-[ext_resource type="PackedScene" uid="uid://c8gb4vjrbtw41" path="res://Enemies/enemy.tscn" id="3_y7fgq"]
 [ext_resource type="PackedScene" uid="uid://cuy3u5plsjk5n" path="res://UI/Screens/Pause/Pause.tscn" id="4_jgor1"]
 [ext_resource type="PackedScene" uid="uid://dv6it8qmro0jd" path="res://Enemies/spawn_point.tscn" id="5_ul0cs"]
+[ext_resource type="PackedScene" uid="uid://doncfhh4pyvji" path="res://Enemies/ranged_enemy.tscn" id="6_5haw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(2239, 93)
@@ -20,27 +20,6 @@ bus = &"SFX"
 parameters/looping = true
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1530910179]
-
-[node name="Enemy" parent="Enemies" unique_id=1825160351 instance=ExtResource("3_y7fgq")]
-position = Vector2(137, 453)
-
-[node name="Enemy2" parent="Enemies" unique_id=1784527774 instance=ExtResource("3_y7fgq")]
-position = Vector2(942, 635)
-
-[node name="Enemy3" parent="Enemies" unique_id=1230733697 instance=ExtResource("3_y7fgq")]
-position = Vector2(263, 673)
-
-[node name="Enemy4" parent="Enemies" unique_id=1041891596 instance=ExtResource("3_y7fgq")]
-position = Vector2(1213, 310)
-
-[node name="Enemy5" parent="Enemies" unique_id=1488742181 instance=ExtResource("3_y7fgq")]
-position = Vector2(624, 681)
-
-[node name="Enemy6" parent="Enemies" unique_id=580899055 instance=ExtResource("3_y7fgq")]
-position = Vector2(1080, 181)
-
-[node name="Enemy7" parent="Enemies" unique_id=1101833908 instance=ExtResource("3_y7fgq")]
-position = Vector2(1151, 540)
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1387289991]
 
@@ -114,5 +93,20 @@ shape = SubResource("RectangleShape2D_af25e")
 position = Vector2(1733, 108)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_af25e")
+
+[node name="Enemy" parent="." unique_id=1825160351 instance=ExtResource("6_5haw7")]
+position = Vector2(835, 326)
+
+[node name="Enemy2" parent="." unique_id=1024580911 instance=ExtResource("6_5haw7")]
+position = Vector2(153, 508)
+
+[node name="Enemy3" parent="." unique_id=526179857 instance=ExtResource("6_5haw7")]
+position = Vector2(281, -25)
+
+[node name="Enemy4" parent="." unique_id=697814714 instance=ExtResource("6_5haw7")]
+position = Vector2(517, 814)
+
+[node name="Enemy5" parent="." unique_id=1991604150 instance=ExtResource("6_5haw7")]
+position = Vector2(932, -178)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
