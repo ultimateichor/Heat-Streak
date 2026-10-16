@@ -10,6 +10,7 @@ var enemyHealth
 var damageTime = true
 var knockback := Vector2.ZERO
 var player: CharacterBody2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var UI: Control 
 
