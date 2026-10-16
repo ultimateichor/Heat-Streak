@@ -1,13 +1,85 @@
 [gd_scene format=3 uid="uid://c8gb4vjrbtw41"]
 
 [ext_resource type="Script" uid="uid://no6oxtfcedve" path="res://Enemies/enemy.gd" id="1_4gyqm"]
-[ext_resource type="Texture2D" uid="uid://bm34lmomi66a6" path="res://Assets/New Piskel (3).png" id="2_bxkaj"]
+[ext_resource type="Texture2D" uid="uid://o6igleavn7xk" path="res://Assets/SophieAssets/animationLayers/enemy1/attack/1.png" id="2_tligp"]
+[ext_resource type="Texture2D" uid="uid://cawsbk4tssyce" path="res://Assets/SophieAssets/animationLayers/enemy1/attack/2.png" id="3_ud0f3"]
+[ext_resource type="Texture2D" uid="uid://dhvalk4c5aoby" path="res://Assets/SophieAssets/animationLayers/enemy1/attack/3.png" id="4_1xcb7"]
+[ext_resource type="Texture2D" uid="uid://xqdh2b4g5itl" path="res://Assets/SophieAssets/animationLayers/enemy1/attack/4.png" id="5_okpwn"]
+[ext_resource type="Texture2D" uid="uid://pgo7kkkme750" path="res://Assets/SophieAssets/animationLayers/enemy1/attack/5.png" id="6_dc8db"]
+[ext_resource type="Texture2D" uid="uid://cqf0y8n4jw6se" path="res://Assets/SophieAssets/animationLayers/enemy1/attack/6.png" id="7_xq7gr"]
+[ext_resource type="Texture2D" uid="uid://bbcmuak4slijl" path="res://Assets/SophieAssets/animationLayers/enemy1/attack/7.png" id="8_nq37r"]
+[ext_resource type="Texture2D" uid="uid://dj4llgq14v81q" path="res://Assets/SophieAssets/animationLayers/enemy1/attack/8.png" id="9_74xqn"]
+[ext_resource type="Texture2D" uid="uid://cfcubjej6awj7" path="res://Assets/SophieAssets/animationLayers/enemy1/attack/9.png" id="10_8nyvi"]
+[ext_resource type="Texture2D" uid="uid://bgrerweek6ul4" path="res://Assets/SophieAssets/animationLayers/enemy1/attack/10.png" id="11_0cfj2"]
+[ext_resource type="Texture2D" uid="uid://rgi1u17jauj4" path="res://Assets/SophieAssets/animationLayers/enemy1/attack/11.png" id="12_jild3"]
+[ext_resource type="Texture2D" uid="uid://dkajqkdtfpdma" path="res://Assets/SophieAssets/animationLayers/enemy1/walk/1.png" id="13_dc8db"]
+[ext_resource type="Texture2D" uid="uid://p6iodviu62da" path="res://Assets/SophieAssets/animationLayers/enemy1/walk/2.png" id="14_xq7gr"]
+[ext_resource type="Texture2D" uid="uid://ctduqctut34me" path="res://Assets/SophieAssets/animationLayers/enemy1/walk/3.png" id="15_nq37r"]
+[ext_resource type="Texture2D" uid="uid://d25wdvgp1gtgd" path="res://Assets/SophieAssets/animationLayers/enemy1/walk/4.png" id="16_74xqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3lat"]
 size = Vector2(54, 58)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(14, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tligp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ud0f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1xcb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_okpwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dc8db")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xq7gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nq37r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_74xqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8nyvi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0cfj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jild3")
+}],
+"loop": 1,
+"name": &"attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_dc8db")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xq7gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_nq37r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_74xqn")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1825160351 groups=["Enemy", "Melee"]]
 collision_layer = 4
@@ -25,12 +97,6 @@ shape = SubResource("RectangleShape2D_q3lat")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870279104 groups=["Enemy"]]
 shape = SubResource("RectangleShape2D_q3lat")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1669331841]
-position = Vector2(0, -1.0728836e-06)
-rotation = 1.5707964
-scale = Vector2(2, 2)
-texture = ExtResource("2_bxkaj")
-
 [node name="Area2D" type="Area2D" parent="." unique_id=56399267 groups=["Enemy", "Melee"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=240869863 groups=["Enemy", "Melee"]]
@@ -38,6 +104,13 @@ position = Vector2(34, 0)
 shape = SubResource("RectangleShape2D_af25e")
 
 [node name="DamageTimer" type="Timer" parent="." unique_id=891839855]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2122781774]
+position = Vector2(2, 0)
+rotation = 3.1415927
+scale = Vector2(0.7843846, 0.8161222)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"walk"
 
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
