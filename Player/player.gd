@@ -12,6 +12,7 @@ var last_aim_angle : float = 0.0
 var currentHealth = -1
 var damageTaken
 @onready var Pause: Control = $"../CanvasLayer/Pause"
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var target_angle = rotation
 

@@ -1,14 +1,33 @@
 [gd_scene format=3 uid="uid://ciw21utjrhi02"]
 
 [ext_resource type="Script" uid="uid://oy1r4aa2sn0n" path="res://Player/Vehicles/car.gd" id="1_qg101"]
-[ext_resource type="Texture2D" uid="uid://c82in2lya7sdb" path="res://Assets/New Piskel (5).png" id="2_rxocv"]
+[ext_resource type="Texture2D" uid="uid://bsbidyg1pljal" path="res://Assets/SophieAssets/animationLayers/player/carobot/1.png" id="2_rxocv"]
 [ext_resource type="PackedScene" uid="uid://ctjxhfrs5am37" path="res://Player/Weapons/base_weapon.tscn" id="3_larho"]
+[ext_resource type="Texture2D" uid="uid://bbq04tgjjo7i2" path="res://Assets/SophieAssets/animationLayers/player/carobot/2.png" id="4_7ppmw"]
+[ext_resource type="Texture2D" uid="uid://cjv4n8vn4wlo8" path="res://Assets/SophieAssets/animationLayers/player/carobot/3.png" id="5_lpojq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(58, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxocv"]
 size = Vector2(28, 93)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rxocv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7ppmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lpojq")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="Car" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
 collision_layer = 2
@@ -36,12 +55,6 @@ shape = SubResource("RectangleShape2D_af25e")
 [node name="DamageTimer" type="Timer" parent="." unique_id=2050933388]
 wait_time = 2.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=573628744]
-position = Vector2(-6, 0)
-rotation = 1.5707964
-scale = Vector2(4, 4)
-texture = ExtResource("2_rxocv")
-
 [node name="BaseWeapon" parent="." unique_id=1133059679 instance=ExtResource("3_larho")]
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1814946588 groups=["Melee"]]
@@ -49,6 +62,15 @@ texture = ExtResource("2_rxocv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1157892519 groups=["Melee", "Player"]]
 position = Vector2(37, 0.5)
 shape = SubResource("RectangleShape2D_rxocv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=573628744]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rxocv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1397789464]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"walk"
 
 [connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

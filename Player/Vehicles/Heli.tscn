@@ -1,10 +1,29 @@
 [gd_scene format=3 uid="uid://7odjdwygqx2a"]
 
 [ext_resource type="Script" uid="uid://du41ippeq1bha" path="res://Player/Vehicles/heli.gd" id="1_7juqt"]
-[ext_resource type="Texture2D" uid="uid://b14v6ouux7xu7" path="res://Assets/2BUEWD-TopView (2).png" id="2_7juqt"]
+[ext_resource type="Texture2D" uid="uid://chyxjdxamuv88" path="res://Assets/SophieAssets/animationLayers/player/heliobot/1.png" id="2_bgf0h"]
+[ext_resource type="Texture2D" uid="uid://cuelm21xsbej5" path="res://Assets/SophieAssets/animationLayers/player/heliobot/2.png" id="3_xc4jb"]
+[ext_resource type="Texture2D" uid="uid://bowyw8lojqkvd" path="res://Assets/SophieAssets/animationLayers/player/heliobot/3.png" id="4_x7d31"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(70, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bgf0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xc4jb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x7d31")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="Heli" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
 z_index = 10
@@ -34,9 +53,15 @@ shape = SubResource("RectangleShape2D_af25e")
 wait_time = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=573628744]
-position = Vector2(2, 2)
-rotation = 1.5707964
-texture = ExtResource("2_7juqt")
+position = Vector2(-0.5000032, 1.4901161e-06)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_bgf0h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=998727766]
+position = Vector2(-2.3841858e-07, -2.3841858e-07)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"walk"
 
 [connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
