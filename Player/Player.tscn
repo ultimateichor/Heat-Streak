@@ -55,7 +55,7 @@ texture = ExtResource("2_tok1r")
 
 [node name="Secondary" parent="Loadouts/HeliLoadout" unique_id=789182644 instance=ExtResource("3_tok1r")]
 fire_rate = 0.45
-damage = 35
+damage = 45
 bullet_speed = 1000.0
 automatic = false
 
