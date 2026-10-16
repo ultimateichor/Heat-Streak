@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dqx8c05fwe0oo"]
+
+[ext_resource type="Script" uid="uid://c2hkrqh8g8my1" path="res://Player/Weapons/shotgun.gd" id="1_8d78b"]
+[ext_resource type="PackedScene" uid="uid://crycqqdbftrbe" path="res://Player/Weapons/bullet.tscn" id="2_1ble7"]
+
+[node name="BaseWeapon" type="Node2D" unique_id=1133059679]
+script = ExtResource("1_8d78b")
+spread_degrees = 35.0
+pellet_lifetime = 0.7
+bullet_scene = ExtResource("2_1ble7")
+fire_rate = 0.65
+damage = 15
+bullet_speed = 700.0
+automatic = false
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1857440017]

@@ -37,6 +37,8 @@ func _move(direction: Vector2, delta: float) -> void:
 func _take_damage(amount: int, type: int) -> void:
 	if type == 1:
 		amount = amount/2
+	else:
+		amount = amount/1.5
 	currentHealth -= amount
 	print(currentHealth)
 	UI._decrease_health(currentHealth)

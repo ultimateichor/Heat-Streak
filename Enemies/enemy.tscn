@@ -10,12 +10,19 @@ size = Vector2(54, 58)
 size = Vector2(14, 58)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1825160351 groups=["Enemy", "Melee"]]
+collision_layer = 4
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_4gyqm")
 enemyDamage = 15
 SPEED = 200
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870279104]
+[node name="Area2D2" type="Area2D" parent="." unique_id=482163762]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=925555767 groups=["Enemy"]]
+shape = SubResource("RectangleShape2D_q3lat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870279104 groups=["Enemy"]]
 shape = SubResource("RectangleShape2D_q3lat")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1669331841]
@@ -25,7 +32,7 @@ texture = ExtResource("2_qi2p4")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=56399267 groups=["Enemy", "Melee"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=240869863 groups=["Enemy"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=240869863 groups=["Enemy", "Melee"]]
 position = Vector2(34, 0)
 shape = SubResource("RectangleShape2D_af25e")
 

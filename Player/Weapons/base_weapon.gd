@@ -33,11 +33,12 @@ func _try_fire(just_pressed: bool) -> void:
 func _fire() -> void:
 	_spawn_bullet(global_rotation)
 	
-func _spawn_bullet(angle: float) -> void:
+func _spawn_bullet(angle: float) -> Node:
 	var bullet = bullet_scene.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = muzzle.global_position
 	bullet.rotation = angle
 	bullet.velocity = Vector2.from_angle(angle) * bullet_speed
 	bullet.damage = damage
+	return bullet
 	

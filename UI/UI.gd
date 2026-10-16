@@ -5,7 +5,8 @@ extends Control
 @export var counter = 40
 @export var healthCounter = 100
 var enemiesKilled
-var enemiesNeeded = 80
+@export var enemiesNeeded = 80
+@export var nextRoom : PackedScene
 
 @onready var timer = $Timer
 
@@ -25,8 +26,9 @@ func _process(_delta: float) -> void:
 		
 		#await get_tree().create_timer(1.0).timeout
 	#	await %ColorRect._fadeOut()
+		var roomPath = nextRoom.get_path()
 		GameManager._end_game()
-		get_tree().change_scene_to_file("res://UI/Screens/Win/Win_Screen.tscn")
+		get_tree().change_scene_to_file(roomPath)
 		
 #	$livesCounter.text = str(livesCounter)
 

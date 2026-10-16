@@ -4,11 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://c64kkn6rnry7d" path="res://Assets/sddefault.jpg" id="2_ddoul"]
 [ext_resource type="Texture2D" uid="uid://c6ufx72upq430" path="res://Player/Screenshot 2025-07-21 132008.png" id="2_tok1r"]
 [ext_resource type="PackedScene" uid="uid://ctjxhfrs5am37" path="res://Player/Weapons/base_weapon.tscn" id="3_tok1r"]
+[ext_resource type="PackedScene" uid="uid://dqx8c05fwe0oo" path="res://Player/Weapons/shotgun.tscn" id="5_8g4oa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(70, 80)
 
 [node name="Player" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
+collision_layer = 2
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_q3lat")
 
@@ -44,17 +47,17 @@ texture = ExtResource("2_tok1r")
 
 [node name="Primary" parent="Loadouts/CarLoadout" unique_id=1133059679 instance=ExtResource("3_tok1r")]
 
-[node name="Secondary" parent="Loadouts/CarLoadout" unique_id=651729886 instance=ExtResource("3_tok1r")]
+[node name="Secondary" parent="Loadouts/CarLoadout" unique_id=1385816102 instance=ExtResource("5_8g4oa")]
 
 [node name="HeliLoadout" type="Node2D" parent="Loadouts" unique_id=737173580]
 
-[node name="Primary" parent="Loadouts/HeliLoadout" unique_id=789182644 instance=ExtResource("3_tok1r")]
+[node name="Primary" parent="Loadouts/HeliLoadout" unique_id=768453231 instance=ExtResource("3_tok1r")]
+
+[node name="Secondary" parent="Loadouts/HeliLoadout" unique_id=789182644 instance=ExtResource("3_tok1r")]
 fire_rate = 0.45
 damage = 35
 bullet_speed = 1000.0
 automatic = false
-
-[node name="Secondary" parent="Loadouts/HeliLoadout" unique_id=768453231 instance=ExtResource("3_tok1r")]
 
 [connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

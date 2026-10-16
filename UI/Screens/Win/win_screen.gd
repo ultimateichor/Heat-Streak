@@ -18,3 +18,6 @@ func _on_quit_pressed() -> void:
 func _on_menu_pressed() -> void:
 	await $CanvasLayer/ColorRect._fadeOut()
 	get_tree().change_scene_to_file("res://UI/Screens/MainMenu/Main Menu.tscn")
+	
+func _on_retry_pressed() -> void:
+	get_tree().change_scene_to_file("res://Level/test_room_1.tscn")
