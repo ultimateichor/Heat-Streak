@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://7odjdwygqx2a"]
 
 [ext_resource type="Script" uid="uid://du41ippeq1bha" path="res://Player/Vehicles/heli.gd" id="1_7juqt"]
-[ext_resource type="Texture2D" uid="uid://c6ufx72upq430" path="res://Player/Screenshot 2025-07-21 132008.png" id="2_o0qvf"]
+[ext_resource type="Texture2D" uid="uid://b14v6ouux7xu7" path="res://Assets/2BUEWD-TopView (2).png" id="2_7juqt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(70, 80)
@@ -34,9 +34,9 @@ shape = SubResource("RectangleShape2D_af25e")
 wait_time = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=573628744]
-position = Vector2(249.99998, -0.058140863)
-scale = Vector2(6.6279063, 0.81513995)
-texture = ExtResource("2_o0qvf")
+position = Vector2(2, 2)
+rotation = 1.5707964
+texture = ExtResource("2_7juqt")
 
 [connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

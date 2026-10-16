@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgii0htdaqb6h"]
 
 [ext_resource type="Script" uid="uid://c6uknnjac3dsl" path="res://UI/Screens/Win/win_screen.gd" id="1_e3d0f"]
-[ext_resource type="Texture2D" uid="uid://bmuvbgj7x2am3" path="res://Assets/FtUr5AfaYAAEHOW.jpg" id="2_7fayp"]
+[ext_resource type="Texture2D" uid="uid://b5xwom2y1r0xs" path="res://Assets/New Piskel.png" id="2_7fayp"]
 [ext_resource type="Script" uid="uid://c7y65rmuf5qeu" path="res://UI/fadeIn.gd" id="3_ysx2i"]
 
 [node name="Win Screen" type="Control" unique_id=231659102]
@@ -11,8 +11,8 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("1_e3d0f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1248161274]
-position = Vector2(385.33334, 216.6667)
-scale = Vector2(1.4681934, 0.82793653)
+position = Vector2(389.3333, 320)
+scale = Vector2(3.1451612, 3)
 texture = ExtResource("2_7fayp")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1371276031]
@@ -22,11 +22,11 @@ scale = Vector2(2.4081423, 1.2386272)
 
 [node name="Label" type="Label" parent="." unique_id=1479253585]
 layout_mode = 0
-offset_left = 460.0
-offset_top = 295.33334
-offset_right = 607.3333
-offset_bottom = 334.33334
-text = "Your did it"
+offset_left = 591.3333
+offset_top = 284.6667
+offset_right = 718.3333
+offset_bottom = 323.6667
+text = "You did it"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1467055650]
 visible = false
