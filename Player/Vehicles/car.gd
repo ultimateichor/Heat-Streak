@@ -21,7 +21,10 @@ func _move(direction: Vector2, delta: float) -> void:
 	var nose = Vector2.from_angle(rotation)
 	
 	if throttle != 0:
-		velocity += nose * throttle * acceleration * delta
+		if throttle > 0:
+			velocity += nose * throttle * acceleration * delta
+		if throttle < 0:
+			velocity += nose * throttle * (acceleration/2) * delta
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 	velocity = velocity.limit_length(SPEED)

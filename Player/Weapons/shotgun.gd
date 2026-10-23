@@ -2,7 +2,7 @@ extends Weapon
 @export var pellets := 6              
 @export var spread_degrees := 30.0     
 @export var speed_variation := 0.15 
-@export var pellet_lifetime := 0.35
+
 
 func _fire() -> void:
 	for i in pellets:
@@ -11,4 +11,4 @@ func _fire() -> void:
 		var offset := deg_to_rad(even + randf_range(-3.0, 3.0))
 		var bullet = _spawn_bullet(global_rotation + offset)
 		
-		bullet.lifetime = pellet_lifetime
+		bullet.lifetime = range

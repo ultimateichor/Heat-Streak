@@ -2,10 +2,12 @@ class_name Weapon
 extends Node2D
 
 @export var bullet_scene: PackedScene
+@export var range: float = 1
 @export var fire_rate := 0.1       # seconds between shots
 @export var damage := 10
 @export var bullet_speed := 900.0
 @export var automatic := true     
+@export var type = false
 
 var cooldown := 0.0
 
@@ -40,5 +42,6 @@ func _spawn_bullet(angle: float) -> Node:
 	bullet.rotation = angle
 	bullet.velocity = Vector2.from_angle(angle) * bullet_speed
 	bullet.damage = damage
+	bullet.lifetime = range
+	bullet.piercing = type
 	return bullet
-	
