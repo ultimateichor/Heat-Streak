@@ -16,7 +16,8 @@ motion_mode = 1
 script = ExtResource("1_qg101")
 acceleration = 1000
 steerSpeed = 5
-SPEED = 800.0
+grip = 10
+SPEED = 1100.0
 isRobot = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=804397636]
