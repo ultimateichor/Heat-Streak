@@ -23,6 +23,9 @@ var secondaryWeapon : Weapon
 var firePrimary = false
 var fireSecondary = false
 
+var primaryCooldown
+var secondaryCooldown
+
 func _ready() -> void:
 	GameManager.player = self
 	if currentHealth < 0:

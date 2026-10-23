@@ -47,10 +47,10 @@ texture = ExtResource("3_8g4oa")
 [node name="CarLoadout" type="Node2D" parent="Loadouts" unique_id=584800298]
 
 [node name="Primary" parent="Loadouts/CarLoadout" unique_id=1133059679 instance=ExtResource("3_tok1r")]
-range = 0.75
-fire_rate = 0.35
-damage = 20
-bullet_speed = 700.0
+range = 0.5
+fire_rate = 0.3
+damage = 25
+bullet_speed = 800.0
 
 [node name="Secondary" parent="Loadouts/CarLoadout" unique_id=1385816102 instance=ExtResource("5_8g4oa")]
 range = 0.35
@@ -58,7 +58,8 @@ range = 0.35
 [node name="HeliLoadout" type="Node2D" parent="Loadouts" unique_id=737173580]
 
 [node name="Primary" parent="Loadouts/HeliLoadout" unique_id=768453231 instance=ExtResource("3_tok1r")]
-range = 0.65
+range = 0.7
+damage = 5
 bullet_speed = 800.0
 
 [node name="Secondary" parent="Loadouts/HeliLoadout" unique_id=789182644 instance=ExtResource("3_tok1r")]
