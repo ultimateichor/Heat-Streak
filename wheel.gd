@@ -56,7 +56,8 @@ func _open() -> void:
 	$Center.position = screen_size / 2
 	$Center.scale = Vector2(wheel_scale, wheel_scale)
 
-	get_viewport().warp_mouse(screen_size / 2)
+	if not _using_controller():
+		get_viewport().warp_mouse(screen_size / 2)
 
 	if stop_time:
 		get_tree().paused = true
@@ -105,6 +106,8 @@ func _update_hover() -> void:
 	var dir := Input.get_vector("Look Left","Look Right","Look Up","Look Down")
 	
 	if dir.length() < 0.5:
+		if _using_controller():
+			return
 		var mouse_offset: Vector2 = get_viewport().get_mouse_position() - get_viewport_rect().size / 2
 		if mouse_offset.length() > mouse_deadzone:
 			dir = mouse_offset
@@ -118,3 +121,8 @@ func _update_hover() -> void:
 	if index != hovered:
 		hovered = index
 		_refresh_slots()
+		
+func _using_controller() -> bool:
+	if not is_instance_valid(GameManager.player):
+		return false
+	return GameManager.player.using_controller

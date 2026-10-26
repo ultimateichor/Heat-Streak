@@ -38,7 +38,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		using_controller = false
-	if event is InputEventJoypadMotion:
+	if event is InputEventJoypadMotion and abs(event.axis_value) > 0.3:
 		using_controller = true
 	if event is InputEventJoypadButton:
 		using_controller = true
