@@ -9,8 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://do5s8wbekxu6v" path="res://Player/vehicle_wheel.tscn" id="6_00oi0"]
 [ext_resource type="PackedScene" uid="uid://bgii0htdaqb6h" path="res://UI/Screens/Win/Win_Screen.tscn" id="6_5ekew"]
 [ext_resource type="PackedScene" uid="uid://doncfhh4pyvji" path="res://Enemies/ranged_enemy.tscn" id="6_5haw7"]
-[ext_resource type="Texture2D" uid="uid://dwd5d16ixflbt" path="res://UI/New Piskel.png" id="9_x0c6o"]
-[ext_resource type="Texture2D" uid="uid://bxdsgejerrrjy" path="res://UI/New Piskel (1).png" id="10_nnvyt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(2239, 93)
@@ -126,13 +124,5 @@ position = Vector2(517, 814)
 
 [node name="Enemy5" parent="." unique_id=1991604150 instance=ExtResource("6_5haw7")]
 position = Vector2(932, -178)
-
-[node name="NewPiskel" type="Sprite2D" parent="." unique_id=1337271452]
-position = Vector2(720, 273)
-texture = ExtResource("9_x0c6o")
-
-[node name="NewPiskel(1)" type="Sprite2D" parent="." unique_id=1461459782]
-position = Vector2(664, 339)
-texture = ExtResource("10_nnvyt")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
