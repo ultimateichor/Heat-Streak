@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://dfwlbag4ysq8y"]
 
 [ext_resource type="AudioStream" uid="uid://ds281wr1c3who" path="res://Namepending-one-v1.mp3" id="1_qc22w"]
+[ext_resource type="PackedScene" uid="uid://b8qpx1q8r8hul" path="res://Player/camera_2d.tscn" id="2_hl830"]
 [ext_resource type="PackedScene" uid="uid://cuy3u5plsjk5n" path="res://UI/Screens/Pause/Pause.tscn" id="2_nq2yd"]
 [ext_resource type="PackedScene" uid="uid://b8uwwjaheopus" path="res://Player/Player.tscn" id="3_fikf3"]
+[ext_resource type="PackedScene" uid="uid://do5s8wbekxu6v" path="res://Player/vehicle_wheel.tscn" id="4_fikf3"]
 [ext_resource type="PackedScene" uid="uid://bdw8ajaey4fbu" path="res://UI/UI.tscn" id="4_hl830"]
 [ext_resource type="PackedScene" uid="uid://cgdp5bwl2cpvn" path="res://Level/test_room_3.tscn" id="5_nq2yd"]
 [ext_resource type="PackedScene" uid="uid://doncfhh4pyvji" path="res://Enemies/ranged_enemy.tscn" id="5_qc22w"]
@@ -20,15 +22,21 @@ parameters/looping = true
 
 [node name="Enemies" type="Node2D" parent="." unique_id=496293433]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1164710465]
-position = Vector2(576, 324)
-zoom = Vector2(0.52, 0.52)
+[node name="Camera2D" parent="." unique_id=852076859 instance=ExtResource("2_hl830")]
+position = Vector2(580, 325)
+zoom = Vector2(0.865, 0.865)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=526768355]
-follow_viewport_enabled = true
 
 [node name="Pause" parent="CanvasLayer" unique_id=358658097 instance=ExtResource("2_nq2yd")]
 visible = false
+
+[node name="VehicleWheel" parent="CanvasLayer" unique_id=1507045803 instance=ExtResource("4_fikf3")]
+
+[node name="UI" parent="CanvasLayer" unique_id=113216334 groups=["UI"] instance=ExtResource("4_hl830")]
+enemiesNeeded = 7
+nextRoom = ExtResource("5_nq2yd")
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="." unique_id=750291830]
 wait_time = 10.0
@@ -38,11 +46,6 @@ autostart = true
 [node name="Player" parent="." unique_id=1601155827 instance=ExtResource("3_fikf3")]
 visibility_layer = 2
 position = Vector2(444, 106)
-
-[node name="UI" parent="." unique_id=113216334 groups=["UI"] instance=ExtResource("4_hl830")]
-enemiesNeeded = 7
-nextRoom = ExtResource("5_nq2yd")
-metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=786273838]
 collision_layer = 15

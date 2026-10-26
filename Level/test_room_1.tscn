@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bobkthp31dcj2"]
 
 [ext_resource type="AudioStream" uid="uid://ds281wr1c3who" path="res://Namepending-one-v1.mp3" id="1_1krvl"]
+[ext_resource type="PackedScene" uid="uid://b8qpx1q8r8hul" path="res://Player/camera_2d.tscn" id="2_qmue1"]
 [ext_resource type="PackedScene" uid="uid://cuy3u5plsjk5n" path="res://UI/Screens/Pause/Pause.tscn" id="2_w7rcc"]
 [ext_resource type="PackedScene" uid="uid://b8uwwjaheopus" path="res://Player/Player.tscn" id="3_mvy8n"]
+[ext_resource type="PackedScene" uid="uid://do5s8wbekxu6v" path="res://Player/vehicle_wheel.tscn" id="4_mvy8n"]
 [ext_resource type="PackedScene" uid="uid://bdw8ajaey4fbu" path="res://UI/UI.tscn" id="4_qmue1"]
 [ext_resource type="PackedScene" uid="uid://c8gb4vjrbtw41" path="res://Enemies/enemy.tscn" id="5_1krvl"]
 [ext_resource type="PackedScene" uid="uid://dfwlbag4ysq8y" path="res://Level/test_room_2.tscn" id="5_w7rcc"]
@@ -20,15 +22,22 @@ parameters/looping = true
 
 [node name="Enemies" type="Node2D" parent="." unique_id=496293433]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1164710465]
-position = Vector2(576, 324)
-zoom = Vector2(0.52, 0.52)
+[node name="Camera2D" parent="." unique_id=852076859 instance=ExtResource("2_qmue1")]
+position = Vector2(956, 516)
+zoom = Vector2(0.865, 0.865)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=526768355]
-follow_viewport_enabled = true
 
 [node name="Pause" parent="CanvasLayer" unique_id=358658097 instance=ExtResource("2_w7rcc")]
 visible = false
+
+[node name="VehicleWheel" parent="CanvasLayer" unique_id=1507045803 instance=ExtResource("4_mvy8n")]
+metadata/_edit_use_anchors_ = true
+
+[node name="UI" parent="CanvasLayer" unique_id=113216334 groups=["UI"] instance=ExtResource("4_qmue1")]
+enemiesNeeded = 14
+nextRoom = ExtResource("5_w7rcc")
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="." unique_id=750291830]
 wait_time = 10.0
@@ -37,14 +46,10 @@ autostart = true
 
 [node name="Player" parent="." unique_id=1601155827 instance=ExtResource("3_mvy8n")]
 visibility_layer = 2
-position = Vector2(444, 106)
-
-[node name="UI" parent="." unique_id=113216334 groups=["UI"] instance=ExtResource("4_qmue1")]
-enemiesNeeded = 14
-nextRoom = ExtResource("5_w7rcc")
-metadata/_edit_use_anchors_ = true
+position = Vector2(823, 299)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=786273838]
+position = Vector2(379, 193)
 collision_layer = 15
 collision_mask = 15
 
@@ -58,6 +63,7 @@ position = Vector2(585.5, 994)
 shape = SubResource("RectangleShape2D_i6y8t")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1618455036]
+position = Vector2(379, 193)
 collision_layer = 15
 collision_mask = 15
 
@@ -72,43 +78,43 @@ rotation = 1.5707964
 shape = SubResource("RectangleShape2D_i6y8t")
 
 [node name="Enemy" parent="." unique_id=1825160351 instance=ExtResource("5_1krvl")]
-position = Vector2(-272, 648)
+position = Vector2(107, 841)
 
 [node name="Enemy2" parent="." unique_id=1592858804 instance=ExtResource("5_1krvl")]
-position = Vector2(484, 506)
+position = Vector2(863, 699)
 
 [node name="Enemy3" parent="." unique_id=977615280 instance=ExtResource("5_1krvl")]
-position = Vector2(1297, 753)
+position = Vector2(1676, 946)
 
 [node name="Enemy4" parent="." unique_id=473278645 instance=ExtResource("5_1krvl")]
-position = Vector2(-405, 321)
+position = Vector2(-26, 514)
 
 [node name="Enemy5" parent="." unique_id=1680218966 instance=ExtResource("5_1krvl")]
-position = Vector2(-305, -35)
+position = Vector2(74, 158)
 
 [node name="Enemy6" parent="." unique_id=2101019384 instance=ExtResource("5_1krvl")]
-position = Vector2(-194, 411)
+position = Vector2(185, 604)
 
 [node name="Enemy7" parent="." unique_id=1572722472 instance=ExtResource("5_1krvl")]
-position = Vector2(1430, 292)
+position = Vector2(1809, 485)
 
 [node name="Enemy8" parent="." unique_id=1598250182 instance=ExtResource("5_1krvl")]
-position = Vector2(1362, 528)
+position = Vector2(1741, 721)
 
 [node name="Enemy9" parent="." unique_id=644084474 instance=ExtResource("5_1krvl")]
-position = Vector2(1198, -30)
+position = Vector2(1577, 163)
 
 [node name="Enemy10" parent="." unique_id=1426005446 instance=ExtResource("5_1krvl")]
-position = Vector2(840, -108)
+position = Vector2(1219, 85)
 
 [node name="Enemy11" parent="." unique_id=595286833 instance=ExtResource("5_1krvl")]
-position = Vector2(799, 755)
+position = Vector2(1178, 948)
 
 [node name="Enemy12" parent="." unique_id=455089730 instance=ExtResource("5_1krvl")]
-position = Vector2(150, 810)
+position = Vector2(529, 1003)
 
 [node name="Enemy13" parent="." unique_id=592433694 instance=ExtResource("5_1krvl")]
-position = Vector2(31, -96)
+position = Vector2(410, 97)
 
 [node name="Enemy14" parent="." unique_id=1857934157 instance=ExtResource("5_1krvl")]
-position = Vector2(314, -213)
+position = Vector2(693, -20)

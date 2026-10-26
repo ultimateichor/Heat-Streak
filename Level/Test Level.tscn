@@ -4,9 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://b8uwwjaheopus" path="res://Player/Player.tscn" id="1_cbsy4"]
 [ext_resource type="AudioStream" uid="uid://ds281wr1c3who" path="res://Namepending-one-v1.mp3" id="2_e18lo"]
 [ext_resource type="PackedScene" uid="uid://cuy3u5plsjk5n" path="res://UI/Screens/Pause/Pause.tscn" id="4_jgor1"]
+[ext_resource type="PackedScene" uid="uid://b8qpx1q8r8hul" path="res://Player/camera_2d.tscn" id="4_nnvyt"]
 [ext_resource type="PackedScene" uid="uid://dv6it8qmro0jd" path="res://Enemies/spawn_point.tscn" id="5_ul0cs"]
+[ext_resource type="PackedScene" uid="uid://do5s8wbekxu6v" path="res://Player/vehicle_wheel.tscn" id="6_00oi0"]
 [ext_resource type="PackedScene" uid="uid://bgii0htdaqb6h" path="res://UI/Screens/Win/Win_Screen.tscn" id="6_5ekew"]
 [ext_resource type="PackedScene" uid="uid://doncfhh4pyvji" path="res://Enemies/ranged_enemy.tscn" id="6_5haw7"]
+[ext_resource type="Texture2D" uid="uid://dwd5d16ixflbt" path="res://UI/New Piskel.png" id="9_x0c6o"]
+[ext_resource type="Texture2D" uid="uid://bxdsgejerrrjy" path="res://UI/New Piskel (1).png" id="10_nnvyt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(2239, 93)
@@ -52,15 +56,25 @@ enemy_scene = ExtResource("6_5haw7")
 spawn_parent = NodePath("../../Enemies")
 respawnTime = 7
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=235416842]
-position = Vector2(576, 324)
-zoom = Vector2(0.52, 0.52)
+[node name="Camera2D" parent="." unique_id=852076859 instance=ExtResource("4_nnvyt")]
+position = Vector2(579, 326)
+zoom = Vector2(0.865, 0.865)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2082724338]
-follow_viewport_enabled = true
 
 [node name="Pause" parent="CanvasLayer" unique_id=358658097 instance=ExtResource("4_jgor1")]
 visible = false
+
+[node name="VehicleWheel" parent="CanvasLayer" unique_id=1507045803 instance=ExtResource("6_00oi0")]
+metadata/_edit_use_anchors_ = true
+
+[node name="UI" parent="CanvasLayer" unique_id=113216334 groups=["UI"] instance=ExtResource("1_5haw7")]
+offset_left = 29.0
+offset_top = -75.0
+offset_right = 29.0
+offset_bottom = -75.0
+nextRoom = ExtResource("6_5ekew")
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="." unique_id=284873298]
 wait_time = 10.0
@@ -70,10 +84,6 @@ autostart = true
 [node name="Player" parent="." unique_id=1601155827 instance=ExtResource("1_cbsy4")]
 visibility_layer = 2
 position = Vector2(444, 106)
-
-[node name="UI" parent="." unique_id=113216334 groups=["UI"] instance=ExtResource("1_5haw7")]
-nextRoom = ExtResource("6_5ekew")
-metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=2073392443]
 collision_layer = 15
@@ -116,5 +126,13 @@ position = Vector2(517, 814)
 
 [node name="Enemy5" parent="." unique_id=1991604150 instance=ExtResource("6_5haw7")]
 position = Vector2(932, -178)
+
+[node name="NewPiskel" type="Sprite2D" parent="." unique_id=1337271452]
+position = Vector2(720, 273)
+texture = ExtResource("9_x0c6o")
+
+[node name="NewPiskel(1)" type="Sprite2D" parent="." unique_id=1461459782]
+position = Vector2(664, 339)
+texture = ExtResource("10_nnvyt")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

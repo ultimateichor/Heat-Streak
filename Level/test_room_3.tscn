@@ -2,8 +2,10 @@
 
 [ext_resource type="AudioStream" uid="uid://ds281wr1c3who" path="res://Namepending-one-v1.mp3" id="1_lio0b"]
 [ext_resource type="PackedScene" uid="uid://cuy3u5plsjk5n" path="res://UI/Screens/Pause/Pause.tscn" id="2_7dwbq"]
+[ext_resource type="PackedScene" uid="uid://b8qpx1q8r8hul" path="res://Player/camera_2d.tscn" id="2_vm6rp"]
 [ext_resource type="PackedScene" uid="uid://b8uwwjaheopus" path="res://Player/Player.tscn" id="3_f7iiv"]
 [ext_resource type="PackedScene" uid="uid://bdw8ajaey4fbu" path="res://UI/UI.tscn" id="4_aaqyw"]
+[ext_resource type="PackedScene" uid="uid://do5s8wbekxu6v" path="res://Player/vehicle_wheel.tscn" id="4_vm6rp"]
 [ext_resource type="PackedScene" uid="uid://y7ecnx7ph5c1" path="res://Level/Test Level.tscn" id="5_f7iiv"]
 [ext_resource type="PackedScene" uid="uid://doncfhh4pyvji" path="res://Enemies/ranged_enemy.tscn" id="5_vm6rp"]
 [ext_resource type="PackedScene" uid="uid://c8gb4vjrbtw41" path="res://Enemies/enemy.tscn" id="7_aaqyw"]
@@ -21,15 +23,21 @@ parameters/looping = true
 
 [node name="Enemies" type="Node2D" parent="." unique_id=496293433]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1164710465]
-position = Vector2(576, 324)
-zoom = Vector2(0.52, 0.52)
+[node name="Camera2D" parent="." unique_id=852076859 instance=ExtResource("2_vm6rp")]
+position = Vector2(579, 326)
+zoom = Vector2(0.865, 0.865)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=526768355]
-follow_viewport_enabled = true
 
 [node name="Pause" parent="CanvasLayer" unique_id=358658097 instance=ExtResource("2_7dwbq")]
 visible = false
+
+[node name="VehicleWheel" parent="CanvasLayer" unique_id=1507045803 instance=ExtResource("4_vm6rp")]
+
+[node name="UI" parent="CanvasLayer" unique_id=113216334 groups=["UI"] instance=ExtResource("4_aaqyw")]
+enemiesNeeded = 14
+nextRoom = ExtResource("5_f7iiv")
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="." unique_id=750291830]
 wait_time = 10.0
@@ -39,11 +47,6 @@ autostart = true
 [node name="Player" parent="." unique_id=1601155827 instance=ExtResource("3_f7iiv")]
 visibility_layer = 2
 position = Vector2(444, 106)
-
-[node name="UI" parent="." unique_id=113216334 groups=["UI"] instance=ExtResource("4_aaqyw")]
-enemiesNeeded = 14
-nextRoom = ExtResource("5_f7iiv")
-metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=786273838]
 collision_layer = 15

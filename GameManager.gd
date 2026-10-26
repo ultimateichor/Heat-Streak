@@ -13,6 +13,8 @@ var useHim = false
 
 var highScore : int
 
+var wheel_open := false
+
 const ROBOT_SCENE := "res://Player/Player.tscn"
 const VEHICLE_SCENES := [
 	"res://Player/Vehicles/Car.tscn","res://Player/Vehicles/Heli.tscn","res://Player/Vehicles/Heli.tscn","res://Player/Vehicles/Heli.tscn"

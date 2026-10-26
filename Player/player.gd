@@ -16,7 +16,7 @@ var damageTaken
 var target_angle = rotation
 
 @export var isRobot = true
-@onready var UI = $"../UI"
+@onready var UI = $"../CanvasLayer/UI"
 
 var primaryWeapon : Weapon
 var secondaryWeapon : Weapon
@@ -51,20 +51,22 @@ func _physics_process(delta: float) -> void:
 	Input.get_axis("Up", "Down")
 	).limit_length(1.0)
 	_move(direction, delta)
-	#Rotation
-	_aim(direction, delta)
-	#Shooting
-	if Input.is_action_pressed("Shoot Primary") and fireSecondary == false:
-		firePrimary = true
-		_shoot_primary()
-	if Input.is_action_just_released("Shoot Primary"):
-		firePrimary = false
-		
-	if Input.is_action_pressed("Shoot Secondary") and firePrimary == false:
-		fireSecondary = true
-		_shoot_secondary()
-	if Input.is_action_just_released("Shoot Secondary"):
-		fireSecondary = false
+	if not GameManager.wheel_open:
+		#Rotation
+		_aim(direction, delta)
+		#Shooting
+		if Input.is_action_pressed("Shoot Primary") and fireSecondary == false:
+			firePrimary = true
+			_shoot_primary()
+		if Input.is_action_just_released("Shoot Primary"):
+			firePrimary = false
+			
+		if Input.is_action_pressed("Shoot Secondary") and firePrimary == false:
+			fireSecondary = true
+			_shoot_secondary()
+		if Input.is_action_just_released("Shoot Secondary"):
+			fireSecondary = false
+	
 	
 	if Input.is_action_just_pressed("Car"):
 		if !GameManager.selected_vehicle == 0:
