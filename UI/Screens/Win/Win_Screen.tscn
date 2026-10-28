@@ -11,8 +11,8 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("1_e3d0f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1248161274]
-position = Vector2(389.3333, 320)
-scale = Vector2(3.1451612, 3)
+position = Vector2(641.85864, 361.3333)
+scale = Vector2(5.181656, 3.3899372)
 texture = ExtResource("2_7fayp")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1371276031]
@@ -22,10 +22,10 @@ scale = Vector2(2.4081423, 1.2386272)
 
 [node name="Label" type="Label" parent="." unique_id=1479253585]
 layout_mode = 0
-offset_left = 591.3333
-offset_top = 284.6667
-offset_right = 718.3333
-offset_bottom = 323.6667
+offset_left = 448.66663
+offset_top = 244.66666
+offset_right = 575.6666
+offset_bottom = 283.66666
 text = "You did it"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1467055650]
@@ -42,22 +42,25 @@ script = ExtResource("3_ysx2i")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1166652603]
 layout_mode = 0
-offset_left = 25.251747
-offset_top = 224.00922
-offset_right = 201.91962
-offset_bottom = 306.00922
+offset_left = 90.0
+offset_top = 414.66666
+offset_right = 378.0
+offset_bottom = 575.6666
 
 [node name="Retry" type="Button" parent="VBoxContainer" unique_id=1907062084]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 text = "Retry"
 
 [node name="Menu" type="Button" parent="VBoxContainer" unique_id=1583034492]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 text = "Menu"
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=618207798]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 text = "Quit"

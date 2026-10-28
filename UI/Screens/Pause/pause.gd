@@ -1,7 +1,7 @@
 extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:

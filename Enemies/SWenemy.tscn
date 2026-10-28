@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://db7yl11f8ouuw"]
+
+[ext_resource type="Script" uid="uid://no6oxtfcedve" path="res://Enemies/enemy.gd" id="1_we0tf"]
+[ext_resource type="Texture2D" uid="uid://bm34lmomi66a6" path="res://Assets/New Piskel (3).png" id="2_hslxe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3lat"]
+size = Vector2(33, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
+size = Vector2(8, 38)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1825160351 groups=["Enemy", "Melee"]]
+collision_layer = 4
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_we0tf")
+knockback_recovery = 10000000000000.0
+maxEnemyHealth = 5
+enemyDamage = 15
+SPEED = 200
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=482163762]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=925555767 groups=["Enemy"]]
+shape = SubResource("RectangleShape2D_q3lat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870279104 groups=["Enemy"]]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_q3lat")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1669331841]
+position = Vector2(-2.0000038, -1)
+rotation = 1.5707964
+scale = Vector2(1.4931622, 1.2930454)
+texture = ExtResource("2_hslxe")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=56399267 groups=["Enemy", "Melee"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=240869863 groups=["Enemy", "Melee"]]
+position = Vector2(20, 0)
+shape = SubResource("RectangleShape2D_af25e")
+
+[node name="DamageTimer" type="Timer" parent="." unique_id=891839855]
+
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

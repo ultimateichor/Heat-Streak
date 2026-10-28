@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c8gb4vjrbtw41"]
 
-[ext_resource type="Script" uid="uid://no6oxtfcedve" path="res://Enemies/enemy.gd" id="1_4gyqm"]
-[ext_resource type="Texture2D" uid="uid://bm34lmomi66a6" path="res://Assets/New Piskel (3).png" id="2_bxkaj"]
+[ext_resource type="Script" uid="uid://no6oxtfcedve" path="res://Enemies/enemy.gd" id="1_1im1p"]
+[ext_resource type="Texture2D" uid="uid://bm34lmomi66a6" path="res://Assets/New Piskel (3).png" id="2_ibfpn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3lat"]
 size = Vector2(54, 58)
@@ -13,7 +13,7 @@ size = Vector2(14, 58)
 collision_layer = 4
 collision_mask = 5
 motion_mode = 1
-script = ExtResource("1_4gyqm")
+script = ExtResource("1_1im1p")
 enemyDamage = 15
 SPEED = 200
 
@@ -29,7 +29,7 @@ shape = SubResource("RectangleShape2D_q3lat")
 position = Vector2(0, -1.0728836e-06)
 rotation = 1.5707964
 scale = Vector2(2, 2)
-texture = ExtResource("2_bxkaj")
+texture = ExtResource("2_ibfpn")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=56399267 groups=["Enemy", "Melee"]]
 

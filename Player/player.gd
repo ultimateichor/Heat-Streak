@@ -16,12 +16,17 @@ var damageTaken
 var target_angle = rotation
 
 @export var isRobot = true
-@onready var UI = $"../UI"
+@onready var UI = $"../CanvasLayer/UI"
 
 var primaryWeapon : Weapon
 var secondaryWeapon : Weapon
 var firePrimary = false
 var fireSecondary = false
+
+var primaryCooldown
+var secondaryCooldown
+
+@export var limitUsage = true
 
 func _ready() -> void:
 	GameManager.player = self
@@ -35,7 +40,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		using_controller = false
-	if event is InputEventJoypadMotion:
+	if event is InputEventJoypadMotion and abs(event.axis_value) > 0.3:
 		using_controller = true
 	if event is InputEventJoypadButton:
 		using_controller = true
@@ -48,20 +53,26 @@ func _physics_process(delta: float) -> void:
 	Input.get_axis("Up", "Down")
 	).limit_length(1.0)
 	_move(direction, delta)
-	#Rotation
-	_aim(direction, delta)
-	#Shooting
-	if Input.is_action_pressed("Shoot Primary") and fireSecondary == false:
-		firePrimary = true
-		_shoot_primary()
-	if Input.is_action_just_released("Shoot Primary"):
-		firePrimary = false
-		
-	if Input.is_action_pressed("Shoot Secondary") and firePrimary == false:
-		fireSecondary = true
-		_shoot_secondary()
-	if Input.is_action_just_released("Shoot Secondary"):
-		fireSecondary = false
+	if not GameManager.wheel_open:
+		#Rotation
+		_aim(direction, delta)
+		#Shooting
+		if Input.is_action_pressed("Shoot Primary"):
+			if limitUsage and fireSecondary:
+				return
+			firePrimary = true
+			_shoot_primary()
+		if Input.is_action_just_released("Shoot Primary"):
+			firePrimary = false
+			
+		if Input.is_action_pressed("Shoot Secondary"):
+			if limitUsage and firePrimary:
+				return
+			fireSecondary = true
+			_shoot_secondary()
+		if Input.is_action_just_released("Shoot Secondary"):
+			fireSecondary = false
+	
 	
 	if Input.is_action_just_pressed("Car"):
 		if !GameManager.selected_vehicle == 0:

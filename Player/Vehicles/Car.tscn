@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ctjxhfrs5am37" path="res://Player/Weapons/base_weapon.tscn" id="3_larho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
-size = Vector2(58, 80)
+size = Vector2(70, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxocv"]
 size = Vector2(28, 93)
@@ -16,7 +16,9 @@ motion_mode = 1
 script = ExtResource("1_qg101")
 acceleration = 1000
 steerSpeed = 5
-SPEED = 800.0
+grip = 10
+ramDamage = 10
+SPEED = 1100.0
 isRobot = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=804397636]
@@ -30,16 +32,15 @@ wait_time = 3.0
 [node name="Area2D" type="Area2D" parent="." unique_id=235330107 groups=["Player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=510006997]
-position = Vector2(-6, 0)
 shape = SubResource("RectangleShape2D_af25e")
 
 [node name="DamageTimer" type="Timer" parent="." unique_id=2050933388]
 wait_time = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=573628744]
-position = Vector2(-6, 0)
+position = Vector2(-16, -1.0000001)
 rotation = 1.5707964
-scale = Vector2(4, 4)
+scale = Vector2(4.64382, 4.64382)
 texture = ExtResource("2_rxocv")
 
 [node name="BaseWeapon" parent="." unique_id=1133059679 instance=ExtResource("3_larho")]
@@ -47,7 +48,11 @@ texture = ExtResource("2_rxocv")
 [node name="Area2D2" type="Area2D" parent="." unique_id=1814946588 groups=["Melee"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1157892519 groups=["Melee", "Player"]]
-position = Vector2(37, 0.5)
+position = Vector2(49, 0.5)
+shape = SubResource("RectangleShape2D_rxocv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2" unique_id=1390916472 groups=["Melee", "Player"]]
+position = Vector2(-49, 0.5)
 shape = SubResource("RectangleShape2D_rxocv")
 
 [connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]

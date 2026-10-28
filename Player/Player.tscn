@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cf2nxmja3rwmb" path="res://Assets/helirobot.png" id="3_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://ctjxhfrs5am37" path="res://Player/Weapons/base_weapon.tscn" id="3_tok1r"]
 [ext_resource type="PackedScene" uid="uid://dqx8c05fwe0oo" path="res://Player/Weapons/shotgun.tscn" id="5_8g4oa"]
+[ext_resource type="Texture2D" uid="uid://d2ooa8mdilak6" path="res://Assets/New Piskel (1).png" id="6_6ysni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(70, 80)
@@ -14,10 +15,10 @@ collision_layer = 2
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_q3lat")
+limitUsage = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1381562560]
 visible = false
-position = Vector2(69.49999, 0)
 scale = Vector2(0.11718748, 0.012500001)
 texture = ExtResource("2_ddoul")
 
@@ -38,8 +39,8 @@ shape = SubResource("RectangleShape2D_af25e")
 wait_time = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=573628744]
-position = Vector2(-2.842171e-14, -0.058140863)
-scale = Vector2(0.5, 0.5)
+position = Vector2(12.999999, 3.9999998)
+scale = Vector2(0.75, 0.7500001)
 texture = ExtResource("3_8g4oa")
 
 [node name="Loadouts" type="Node2D" parent="." unique_id=1580582265]
@@ -47,18 +48,42 @@ texture = ExtResource("3_8g4oa")
 [node name="CarLoadout" type="Node2D" parent="Loadouts" unique_id=584800298]
 
 [node name="Primary" parent="Loadouts/CarLoadout" unique_id=1133059679 instance=ExtResource("3_tok1r")]
+position = Vector2(22, 29)
+range = 0.5
+fire_rate = 0.3
+damage = 25
 
 [node name="Secondary" parent="Loadouts/CarLoadout" unique_id=1385816102 instance=ExtResource("5_8g4oa")]
+position = Vector2(22, -29)
+range = 0.35
 
 [node name="HeliLoadout" type="Node2D" parent="Loadouts" unique_id=737173580]
 
 [node name="Primary" parent="Loadouts/HeliLoadout" unique_id=768453231 instance=ExtResource("3_tok1r")]
+position = Vector2(22, 29)
+range = 0.7
+damage = 5
 
 [node name="Secondary" parent="Loadouts/HeliLoadout" unique_id=789182644 instance=ExtResource("3_tok1r")]
-fire_rate = 0.45
+position = Vector2(22, -29)
+range = 5.0
+fire_rate = 3.0
 damage = 45
-bullet_speed = 1000.0
+bullet_speed = 2000.0
 automatic = false
+type = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=525927556]
+position = Vector2(154, -29)
+rotation = 1.5707964
+scale = Vector2(0.1527223, 65.82955)
+texture = ExtResource("6_6ysni")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1888027637]
+position = Vector2(154, 29)
+rotation = 1.5707964
+scale = Vector2(0.1527223, 65.82955)
+texture = ExtResource("6_6ysni")
 
 [connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

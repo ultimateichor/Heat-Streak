@@ -2,19 +2,23 @@ class_name Weapon
 extends Node2D
 
 @export var bullet_scene: PackedScene
+@export var range: float = 1
 @export var fire_rate := 0.1       # seconds between shots
 @export var damage := 10
 @export var bullet_speed := 900.0
 @export var automatic := true     
+@export var type = false
 
 var cooldown := 0.0
+var weapon_id: String
+
 
 @onready var muzzle: Marker2D = $Muzzle
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	weapon_id = get_parent().name + "/" + name
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,11 +27,12 @@ func _process(delta: float) -> void:
 		cooldown = max(cooldown - delta, 0.0)
 
 func _try_fire(just_pressed: bool) -> void:
-	if cooldown > 0.0:
+	var ready_at: float = GameManager.weapon_ready_at.get(weapon_id, 0.0)
+	if GameManager.game_time < ready_at:
 		return
 	if !automatic && !just_pressed:
 		return
-	cooldown = fire_rate
+	GameManager.weapon_ready_at[weapon_id] = GameManager.game_time + fire_rate
 	_fire()
 	
 func _fire() -> void:
@@ -40,5 +45,6 @@ func _spawn_bullet(angle: float) -> Node:
 	bullet.rotation = angle
 	bullet.velocity = Vector2.from_angle(angle) * bullet_speed
 	bullet.damage = damage
+	bullet.lifetime = range
+	bullet.piercing = type
 	return bullet
-	

@@ -13,6 +13,8 @@ var useHim = false
 
 var highScore : int
 
+var wheel_open := false
+
 const ROBOT_SCENE := "res://Player/Player.tscn"
 const VEHICLE_SCENES := [
 	"res://Player/Vehicles/Car.tscn","res://Player/Vehicles/Heli.tscn","res://Player/Vehicles/Heli.tscn","res://Player/Vehicles/Heli.tscn"
@@ -21,14 +23,18 @@ const VEHICLE_SCENES := [
 var unlocked_vehicles: Array[int] = [0,1]
 var selected_vehicle := 0
 
+var game_time := 0.0
+
+var weapon_ready_at := {}
 
 func _process(_delta: float) -> void:
-	pass
+	game_time += _delta
 
 func _start_game():
 	gameStarted = true
 
 func _end_game():
+	weapon_ready_at.clear()
 	gameStarted = false
 	readyToStart = false
 	currentGameSpeed = 0
