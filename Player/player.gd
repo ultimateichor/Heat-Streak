@@ -26,6 +26,8 @@ var fireSecondary = false
 var primaryCooldown
 var secondaryCooldown
 
+@export var limitUsage = true
+
 func _ready() -> void:
 	GameManager.player = self
 	if currentHealth < 0:
@@ -55,13 +57,17 @@ func _physics_process(delta: float) -> void:
 		#Rotation
 		_aim(direction, delta)
 		#Shooting
-		if Input.is_action_pressed("Shoot Primary") and fireSecondary == false:
+		if Input.is_action_pressed("Shoot Primary"):
+			if limitUsage and fireSecondary:
+				return
 			firePrimary = true
 			_shoot_primary()
 		if Input.is_action_just_released("Shoot Primary"):
 			firePrimary = false
 			
-		if Input.is_action_pressed("Shoot Secondary") and firePrimary == false:
+		if Input.is_action_pressed("Shoot Secondary"):
+			if limitUsage and firePrimary:
+				return
 			fireSecondary = true
 			_shoot_secondary()
 		if Input.is_action_just_released("Shoot Secondary"):
