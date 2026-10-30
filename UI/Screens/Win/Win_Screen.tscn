@@ -22,11 +22,12 @@ scale = Vector2(2.4081423, 1.2386272)
 
 [node name="Label" type="Label" parent="." unique_id=1479253585]
 layout_mode = 0
-offset_left = 448.66663
-offset_top = 244.66666
-offset_right = 575.6666
-offset_bottom = 283.66666
-text = "You did it"
+offset_left = 562.0
+offset_top = 436.66666
+offset_right = 767.3334
+offset_bottom = 487.66666
+rotation = 0.40142572
+text = "Your did it"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1467055650]
 visible = false

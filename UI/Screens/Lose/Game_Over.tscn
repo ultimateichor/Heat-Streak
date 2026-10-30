@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b6vdn1gdinquu"]
 
 [ext_resource type="Script" uid="uid://dc2ghm2g4856a" path="res://UI/Screens/Lose/game_over.gd" id="1_5ruhh"]
-[ext_resource type="Texture2D" uid="uid://hvrpk2c48jue" path="res://Assets/New Piskel (2).png" id="2_mb2jm"]
 [ext_resource type="Script" uid="uid://c7y65rmuf5qeu" path="res://UI/fadeIn.gd" id="3_hbypc"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mb2jm"]
+[ext_resource type="Texture2D" uid="uid://bh7bnn2jy31pv" path="res://Assets/updatedMenu.png" id="3_iuuc6"]
+[ext_resource type="Texture2D" uid="uid://b5xwom2y1r0xs" path="res://Assets/New Piskel.png" id="4_ac4lo"]
+[ext_resource type="Texture2D" uid="uid://jufum37nhss1" path="res://Assets/updatedLosescreen.png" id="5_iuuc6"]
 
 [node name="Game Over" type="Control" unique_id=347231002]
 layout_mode = 3
@@ -13,39 +13,48 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.00036422155
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_5ruhh")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1670063709]
-material = SubResource("ShaderMaterial_mb2jm")
-position = Vector2(638.81116, 364.38202)
-scale = Vector2(5.1865654, 3.4209774)
-texture = ExtResource("2_mb2jm")
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1309485764]
+layout_mode = 0
+offset_left = 386.66663
+offset_top = 251.33331
+offset_right = 426.66663
+offset_bottom = 291.3333
+texture = ExtResource("3_iuuc6")
+expand_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="TextureRect" unique_id=1672406491]
+position = Vector2(252.82303, 110.66667)
+scale = Vector2(5.173304, 3.427673)
+texture = ExtResource("4_ac4lo")
+
+[node name="Sprite2D2" type="Sprite2D" parent="TextureRect" unique_id=2141905985]
+position = Vector2(253.33342, 108.66667)
+scale = Vector2(7.9999995, 8)
+texture = ExtResource("5_iuuc6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=907791062]
 layout_mode = 0
-offset_left = 100.51053
-offset_top = 428.7033
-offset_right = 421.6281
-offset_bottom = 646.7033
+offset_left = 105.16385
+offset_top = 465.37167
+offset_right = 426.28143
+offset_bottom = 683.3717
 
 [node name="Retry" type="Button" parent="VBoxContainer" unique_id=124242170]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 text = "Retry"
 
 [node name="Menu" type="Button" parent="VBoxContainer" unique_id=2141986207]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 text = "Menu"
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=620763456]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 text = "Quit"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1715220957]

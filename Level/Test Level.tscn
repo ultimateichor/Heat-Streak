@@ -71,6 +71,7 @@ offset_left = 29.0
 offset_top = -75.0
 offset_right = 29.0
 offset_bottom = -75.0
+enemiesNeeded = 40
 nextRoom = ExtResource("6_5ekew")
 metadata/_edit_use_anchors_ = true
 
