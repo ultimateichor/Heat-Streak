@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bdw8ajaey4fbu" path="res://UI/UI.tscn" id="4_qmue1"]
 [ext_resource type="PackedScene" uid="uid://c8gb4vjrbtw41" path="res://Enemies/enemy.tscn" id="5_1krvl"]
 [ext_resource type="PackedScene" uid="uid://dfwlbag4ysq8y" path="res://Level/test_room_2.tscn" id="5_w7rcc"]
-[ext_resource type="PackedScene" uid="uid://br80ygvufd44o" path="res://Player/health_pickup.tscn" id="9_4bgi4"]
+[ext_resource type="PackedScene" uid="uid://cd81v4cms0b1c" path="res://Player/vehicle_unlock.tscn" id="9_4bgi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6y8t"]
 size = Vector2(2239, 93)
@@ -51,8 +51,7 @@ position = Vector2(823, 299)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=786273838]
 position = Vector2(379, 193)
-collision_layer = 15
-collision_mask = 15
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1469299637]
 visibility_layer = 3
@@ -65,8 +64,7 @@ shape = SubResource("RectangleShape2D_i6y8t")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1618455036]
 position = Vector2(379, 193)
-collision_layer = 15
-collision_mask = 15
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=362760190]
 position = Vector2(-577, 108)
@@ -120,5 +118,6 @@ position = Vector2(410, 97)
 [node name="Enemy14" parent="." unique_id=1857934157 instance=ExtResource("5_1krvl")]
 position = Vector2(693, -20)
 
-[node name="Health Pickup" parent="." unique_id=1461856341 instance=ExtResource("9_4bgi4")]
-position = Vector2(509, 375)
+[node name="Vehicle Unlock" parent="." unique_id=1461856341 instance=ExtResource("9_4bgi4")]
+position = Vector2(349, 438)
+vehicleIndex = 1

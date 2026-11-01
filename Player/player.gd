@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+@export var use_debug_unlocks := false
+@export_flags("Car", "Helicopter", "Tank", "Jet") var debug_unlocked_vehicles := 0
 @export var SPEED : float = 425.0
 var using_controller := true
 var using_controller_right := false
@@ -28,8 +30,10 @@ var secondaryCooldown
 
 @export var limitUsage = true
 
+
 func _ready() -> void:
 	GameManager.player = self
+	_apply_debug_unlocks()
 	maxHealth = GameManager.maxPlayerHealth
 	if currentHealth < 0:
 		currentHealth = GameManager.currentPlayerHealth
@@ -220,3 +224,23 @@ func _restore_health(amount: int):
 		GameManager.currentPlayerHealth = currentHealth
 		UI._decrease_health(GameManager.currentPlayerHealth)
 		
+func _apply_debug_unlocks() -> void:
+	# Skip if it's turned off, already applied this run, or this is an
+	# exported build (OS.is_debug_build() is only true when running
+	# from the editor, so players can never trigger this).
+	if not use_debug_unlocks or GameManager.debug_unlocks_applied or not OS.is_debug_build():
+		return
+	GameManager.debug_unlocks_applied = true
+
+	# Replace the unlocked list with exactly what's checked.
+	GameManager.unlocked_vehicles.clear()
+	for i in GameManager.VEHICLE_SCENES.size():
+		# 1 << i = the bit for vehicle i (1, 2, 4, 8...).
+		# & checks whether that bit is set, i.e. whether that box is checked.
+		if debug_unlocked_vehicles & (1 << i):
+			GameManager.unlocked_vehicles.append(i)
+
+	# If the selected vehicle isn't unlocked, select the first one that is.
+	if not GameManager.selected_vehicle in GameManager.unlocked_vehicles \
+			and not GameManager.unlocked_vehicles.is_empty():
+		GameManager.selected_vehicle = GameManager.unlocked_vehicles[0]

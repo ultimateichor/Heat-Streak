@@ -9,6 +9,8 @@
 script = ExtResource("1_dfbif")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=71498219]
+collision_layer = 0
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=964196380]
 shape = SubResource("CircleShape2D_af25e")

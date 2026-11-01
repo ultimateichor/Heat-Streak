@@ -14,9 +14,11 @@ size = Vector2(70, 80)
 
 [node name="Player" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 21
 motion_mode = 1
 script = ExtResource("1_q3lat")
+use_debug_unlocks = true
+debug_unlocked_vehicles = 1
 limitUsage = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1381562560]
@@ -33,6 +35,8 @@ shape = SubResource("RectangleShape2D_af25e")
 wait_time = 3.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=235330107 groups=["Player"]]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=510006997 groups=["Player"]]
 shape = SubResource("RectangleShape2D_af25e")
@@ -93,6 +97,18 @@ range = 0.7
 fire_rate = 4.0
 damage = 40
 automatic = false
+
+[node name="JetLoadout" type="Node2D" parent="Loadouts" unique_id=1916630812]
+
+[node name="Primary" parent="Loadouts/JetLoadout" unique_id=2055949363 instance=ExtResource("3_tok1r")]
+position = Vector2(22, 29)
+range = 0.5
+fire_rate = 0.3
+damage = 25
+
+[node name="Secondary" parent="Loadouts/JetLoadout" unique_id=2058624252 instance=ExtResource("5_8g4oa")]
+position = Vector2(22, -29)
+range = 0.35
 
 [node name="Sprite2D3" type="Sprite2D" parent="." unique_id=525927556]
 position = Vector2(154, -29)

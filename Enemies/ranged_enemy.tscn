@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cvc2gy4fomuqb" path="res://Enemies/ranged_enemy.gd" id="1_ius0x"]
 [ext_resource type="PackedScene" uid="uid://c1pg7ios3gybl" path="res://Enemies/enemy_bullet.tscn" id="2_hyijr"]
 [ext_resource type="Texture2D" uid="uid://b876bbt8a3a1k" path="res://Assets/New Piskel (4).png" id="3_ius0x"]
+[ext_resource type="PackedScene" uid="uid://br80ygvufd44o" path="res://Player/health_pickup.tscn" id="3_tumyb"]
+[ext_resource type="PackedScene" uid="uid://cgbd0eytsmld1" path="res://Player/big_health_pickup.tscn" id="4_fssl3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3lat"]
 size = Vector2(54, 58)
@@ -12,13 +14,17 @@ size = Vector2(54, 58)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1825160351 groups=["Enemy"]]
 collision_layer = 4
-collision_mask = 5
+collision_mask = 21
 motion_mode = 1
 script = ExtResource("1_ius0x")
 bullet = ExtResource("2_hyijr")
 maxEnemyHealth = 40
 type = 2
 SPEED = 175
+health_pickup = ExtResource("3_tumyb")
+big_health_pickup = ExtResource("4_fssl3")
+health_drop_chance = 0.313
+big_health_drop_chance = 0.128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870279104]
 shape = SubResource("RectangleShape2D_q3lat")
@@ -29,7 +35,9 @@ rotation = 1.5707964
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("3_ius0x")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=56399267 groups=["Enemy", "Melee"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=56399267 groups=["Enemy"]]
+collision_layer = 64
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=240869863 groups=["Enemy"]]
 shape = SubResource("RectangleShape2D_af25e")

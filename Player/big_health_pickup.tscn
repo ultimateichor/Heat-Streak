@@ -12,6 +12,8 @@ healAmount = 30
 
 [node name="Area2D" type="Area2D" parent="." unique_id=71498219]
 scale = Vector2(0.215, 0.215)
+collision_layer = 0
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=964196380]
 scale = Vector2(0.215, 0.215)

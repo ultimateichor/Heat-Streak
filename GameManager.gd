@@ -1,6 +1,8 @@
 extends Node
 
 var player: Player
+signal vehicle_unlocked(index: int)
+const VEHICLE_NAMES := ["Car", "Helicopter", "Tank", "Jet"]
 
 var currentGameSpeed: float = 0
 var defaultGameSpeed: float = 0.5
@@ -19,11 +21,13 @@ var wheel_open := false
 
 const ROBOT_SCENE := "res://Player/Player.tscn"
 const VEHICLE_SCENES := [
-	"res://Player/Vehicles/Car.tscn","res://Player/Vehicles/Heli.tscn","res://Player/Vehicles/Tank.tscn","res://Player/Vehicles/Heli.tscn"
+	"res://Player/Vehicles/Car.tscn","res://Player/Vehicles/Heli.tscn","res://Player/Vehicles/Tank.tscn","res://Player/Vehicles/Jet.tscn"
 ]
 
-var unlocked_vehicles: Array[int] = [0,1,2]
+var unlocked_vehicles: Array[int] = []
 var selected_vehicle := 0
+
+var debug_unlocks_applied = false
 
 var game_time := 0.0
 
@@ -46,8 +50,12 @@ func _reset():
 	currentPlayerHealth = maxPlayerHealth
 	
 func _unlock_vehicle(index: int) -> void:
-	if index not in unlocked_vehicles:
-		unlocked_vehicles.append(index)
+	if index in unlocked_vehicles:
+		return
+	unlocked_vehicles.append(index)
+	if unlocked_vehicles.size() == 1:
+		selected_vehicle = index
+	vehicle_unlocked.emit(index)
 
 func _select_vehicle(index: int) -> void:
 	if index in unlocked_vehicles:
