@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bdw8ajaey4fbu" path="res://UI/UI.tscn" id="4_qmue1"]
 [ext_resource type="PackedScene" uid="uid://c8gb4vjrbtw41" path="res://Enemies/enemy.tscn" id="5_1krvl"]
 [ext_resource type="PackedScene" uid="uid://dfwlbag4ysq8y" path="res://Level/test_room_2.tscn" id="5_w7rcc"]
+[ext_resource type="PackedScene" uid="uid://br80ygvufd44o" path="res://Player/health_pickup.tscn" id="9_4bgi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6y8t"]
 size = Vector2(2239, 93)
@@ -118,3 +119,6 @@ position = Vector2(410, 97)
 
 [node name="Enemy14" parent="." unique_id=1857934157 instance=ExtResource("5_1krvl")]
 position = Vector2(693, -20)
+
+[node name="Health Pickup" parent="." unique_id=1461856341 instance=ExtResource("9_4bgi4")]
+position = Vector2(509, 375)

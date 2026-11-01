@@ -51,10 +51,11 @@ func _move(direction: Vector2, delta: float) -> void:
 	
 func _take_damage(amount: int, type: int) -> void:
 	if type == 1:
-		amount = amount/3
+		amount = amount/5
 	else:
-		amount = amount/3
+		amount = amount/5
 	currentHealth -= amount
+	GameManager.currentPlayerHealth = currentHealth
 	print(currentHealth)
 	UI._decrease_health(currentHealth)
 	if currentHealth <= 0:

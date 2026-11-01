@@ -36,7 +36,7 @@ func _ready() -> void:
 	target_angle = rotation
 	last_aim_angle = rotation
 	_equip_loadout(GameManager.selected_vehicle)
-	UI._decrease_health(currentHealth)
+	UI._decrease_health(GameManager.currentPlayerHealth)
 
 #checks current input method
 func _input(event: InputEvent) -> void:
@@ -203,7 +203,7 @@ func _swap_to(path: String) -> void:
 	var newForm: Player = load(path).instantiate()
 	newForm.position = position
 	newForm.rotation = rotation
-	newForm.currentHealth = currentHealth
+	newForm.currentHealth = GameManager.currentPlayerHealth
 	newForm.using_controller = using_controller
 	
 	set_physics_process(false)
@@ -213,4 +213,10 @@ func _swap_to(path: String) -> void:
 
 	get_parent().add_child(newForm)
 	queue_free()
+	
+func _restore_health(amount: int):
+	if currentHealth < maxHealth:
+		currentHealth = min(currentHealth + amount, maxHealth)
+		GameManager.currentPlayerHealth = currentHealth
+		UI._decrease_health(GameManager.currentPlayerHealth)
 		
