@@ -30,11 +30,13 @@ var secondaryCooldown
 
 func _ready() -> void:
 	GameManager.player = self
+	maxHealth = GameManager.maxPlayerHealth
 	if currentHealth < 0:
-		currentHealth = maxHealth
+		currentHealth = GameManager.currentPlayerHealth
 	target_angle = rotation
 	last_aim_angle = rotation
 	_equip_loadout(GameManager.selected_vehicle)
+	UI._decrease_health(currentHealth)
 
 #checks current input method
 func _input(event: InputEvent) -> void:
@@ -159,6 +161,7 @@ func _on_rotation_timer_timeout() -> void:
 #Takes the damage from enemies and calls die() if health is <= 0
 func _take_damage(amount: int, type: int) -> void:
 	currentHealth -= amount
+	GameManager.currentPlayerHealth = currentHealth
 	print(currentHealth)
 	UI._decrease_health(currentHealth)
 	if currentHealth <= 0:
@@ -167,6 +170,7 @@ func _take_damage(amount: int, type: int) -> void:
 func _die():
 	print("death is upon us")
 	GameManager._end_game()
+	GameManager._reset()
 	get_tree().call_deferred("change_scene_to_file", 'res://UI/Screens/Lose/Game_Over.tscn')
 
 func _equip_loadout(index: int) -> void:

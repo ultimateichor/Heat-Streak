@@ -118,10 +118,10 @@ text = "Quit"
 
 [node name="ManButton" type="Button" parent="." unique_id=997812766]
 layout_mode = 0
-offset_left = 569.3333
-offset_top = 112.66667
-offset_right = 585.3333
-offset_bottom = 131.19296
+offset_left = 1252.0
+offset_top = 20.0
+offset_right = 1268.0
+offset_bottom = 38.52629
 expand_icon = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1459787551]

@@ -35,10 +35,10 @@ text = "Continue"
 
 [node name="Label" type="Label" parent="." unique_id=1393325273]
 layout_mode = 1
-offset_left = 652.0
-offset_top = 360.0
-offset_right = 1857.0
-offset_bottom = 1068.0
+offset_left = 445.0
+offset_top = 522.0
+offset_right = 1650.0
+offset_bottom = 1230.0
 text = "Move: WASD/ Left Stick
 Shoot Primary: Left click/ Right Trigger
 Shoot Secondary: Right click/ Left Trigger

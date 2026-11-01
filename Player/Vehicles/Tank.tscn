@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://ok32v1pcftc"]
+
+[ext_resource type="Script" uid="uid://dd6y64vxq4qli" path="res://Player/Vehicles/tank.gd" id="1_f8xft"]
+[ext_resource type="Texture2D" uid="uid://c82in2lya7sdb" path="res://Assets/New Piskel (5).png" id="2_ycwus"]
+[ext_resource type="PackedScene" uid="uid://ctjxhfrs5am37" path="res://Player/Weapons/base_weapon.tscn" id="3_586fk"]
+[ext_resource type="Texture2D" uid="uid://b14v6ouux7xu7" path="res://Assets/2BUEWD-TopView (2).png" id="4_ycwus"]
+[ext_resource type="PackedScene" uid="uid://dycrsj6awu04b" path="res://Player/Weapons/tank_bullet.tscn" id="5_586fk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
+size = Vector2(70, 80)
+
+[node name="Tank" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_f8xft")
+acceleration = 250
+steerSpeed = 2
+SPEED = 250.0
+isRobot = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=804397636]
+shape = SubResource("RectangleShape2D_af25e")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=8602036]
+
+[node name="RotationTimer" type="Timer" parent="." unique_id=1899031143]
+wait_time = 3.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=235330107 groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=510006997]
+shape = SubResource("RectangleShape2D_af25e")
+
+[node name="DamageTimer" type="Timer" parent="." unique_id=2050933388]
+wait_time = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=573628744]
+position = Vector2(-16, -1.0000001)
+rotation = 1.5707964
+scale = Vector2(4.64382, 4.64382)
+texture = ExtResource("2_ycwus")
+
+[node name="Cannon" type="Node2D" parent="." unique_id=564982243]
+
+[node name="CannonSprite" type="Sprite2D" parent="Cannon" unique_id=775638560]
+position = Vector2(0, 2)
+rotation = 1.5707964
+texture = ExtResource("4_ycwus")
+
+[node name="Muzzle" type="Marker2D" parent="Cannon/CannonSprite" unique_id=1245211178]
+position = Vector2(-2.0000024, -56)
+
+[node name="BaseWeapon" parent="Cannon/CannonSprite" unique_id=1133059679 instance=ExtResource("3_586fk")]
+position = Vector2(-2.0000024, -56)
+rotation = -1.5707964
+bullet_scene = ExtResource("5_586fk")
+range = 0.8
+fire_rate = 10.0
+damage = 50
+automatic = false
+
+[connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

@@ -8,6 +8,8 @@ var shouldSpeedUp: bool = true
 
 var gameStarted: bool = false
 var readyToStart: bool = false
+var maxPlayerHealth = 100
+var currentPlayerHealth = 100
 
 var useHim = false
 
@@ -17,10 +19,10 @@ var wheel_open := false
 
 const ROBOT_SCENE := "res://Player/Player.tscn"
 const VEHICLE_SCENES := [
-	"res://Player/Vehicles/Car.tscn","res://Player/Vehicles/Heli.tscn","res://Player/Vehicles/Heli.tscn","res://Player/Vehicles/Heli.tscn"
+	"res://Player/Vehicles/Car.tscn","res://Player/Vehicles/Heli.tscn","res://Player/Vehicles/Tank.tscn","res://Player/Vehicles/Heli.tscn"
 ]
 
-var unlocked_vehicles: Array[int] = [0,1]
+var unlocked_vehicles: Array[int] = [0,1,2]
 var selected_vehicle := 0
 
 var game_time := 0.0
@@ -38,6 +40,10 @@ func _end_game():
 	gameStarted = false
 	readyToStart = false
 	currentGameSpeed = 0
+	
+func _reset():
+	selected_vehicle = 0
+	currentPlayerHealth = maxPlayerHealth
 	
 func _unlock_vehicle(index: int) -> void:
 	if index not in unlocked_vehicles:
