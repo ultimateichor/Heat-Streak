@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://do5s8wbekxu6v" path="res://Player/vehicle_wheel.tscn" id="6_00oi0"]
 [ext_resource type="PackedScene" uid="uid://bgii0htdaqb6h" path="res://UI/Screens/Win/Win_Screen.tscn" id="6_5ekew"]
 [ext_resource type="PackedScene" uid="uid://doncfhh4pyvji" path="res://Enemies/ranged_enemy.tscn" id="6_5haw7"]
+[ext_resource type="PackedScene" uid="uid://vq85yuw3t0nl" path="res://Enemies/CARRIER_enemy.tscn" id="10_x0c6o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(2239, 93)
@@ -75,6 +76,12 @@ enemiesNeeded = 40
 nextRoom = ExtResource("6_5ekew")
 metadata/_edit_use_anchors_ = true
 
+[node name="Enemy" parent="CanvasLayer" unique_id=1825160351 instance=ExtResource("10_x0c6o")]
+position = Vector2(470, 486)
+
+[node name="Enemy2" parent="CanvasLayer" unique_id=464164490 instance=ExtResource("10_x0c6o")]
+position = Vector2(1466, 635)
+
 [node name="Timer" type="Timer" parent="." unique_id=284873298]
 wait_time = 10.0
 one_shot = true
@@ -111,7 +118,7 @@ position = Vector2(1733, 108)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_af25e")
 
-[node name="Enemy" parent="." unique_id=1825160351 instance=ExtResource("6_5haw7")]
+[node name="Enemy" parent="." unique_id=1640469091 instance=ExtResource("6_5haw7")]
 position = Vector2(835, 326)
 
 [node name="Enemy2" parent="." unique_id=1024580911 instance=ExtResource("6_5haw7")]
