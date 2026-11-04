@@ -10,7 +10,10 @@ var enemyHealth
 var damageTime = true
 var knockback := Vector2.ZERO
 var player: CharacterBody2D
-
+@export var health_pickup: PackedScene
+@export var big_health_pickup: PackedScene
+@export_range(0.0, 1.0) var health_drop_chance := 0.2
+@export_range(0.0, 1.0) var big_health_drop_chance := 0.05
 var UI: Control 
 
 func _ready() -> void:
@@ -52,6 +55,7 @@ func _enemy_take_damage(damage: int) -> void:
 		_enemy_die()
 		
 func _enemy_die() -> void:
+	_drop_loot()
 	UI.enemiesNeeded -= 1
 	queue_free()
 #Stops movement and ability to damage until timeout
@@ -60,3 +64,20 @@ func _on_damage_timer_timeout() -> void:
 	
 func apply_knockback(force: Vector2) -> void:
 	knockback = force
+	
+func _drop_loot() -> void:
+	var roll := randf()
+	var scene: PackedScene = null
+
+	if roll < big_health_drop_chance:
+		scene = big_health_pickup
+	elif roll < big_health_drop_chance + health_drop_chance:
+		scene = health_pickup
+
+	if scene == null:
+		return
+
+	var pickup = scene.instantiate()
+	var level = get_tree().current_scene
+	pickup.position = level.to_local(global_position)
+	level.add_child.call_deferred(pickup)

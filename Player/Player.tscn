@@ -6,15 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://ctjxhfrs5am37" path="res://Player/Weapons/base_weapon.tscn" id="3_tok1r"]
 [ext_resource type="PackedScene" uid="uid://dqx8c05fwe0oo" path="res://Player/Weapons/shotgun.tscn" id="5_8g4oa"]
 [ext_resource type="Texture2D" uid="uid://d2ooa8mdilak6" path="res://Assets/New Piskel (1).png" id="6_6ysni"]
+[ext_resource type="PackedScene" uid="uid://brarnualx7sbk" path="res://Player/Weapons/heavy_machine_gun.tscn" id="6_s1rgi"]
+[ext_resource type="PackedScene" uid="uid://iu1526v13udt" path="res://Player/Weapons/cannon_bullet.tscn" id="6_vlldt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
 size = Vector2(70, 80)
 
 [node name="Player" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 21
 motion_mode = 1
 script = ExtResource("1_q3lat")
+use_debug_unlocks = true
+debug_unlocked_vehicles = 1
 limitUsage = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1381562560]
@@ -31,6 +35,8 @@ shape = SubResource("RectangleShape2D_af25e")
 wait_time = 3.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=235330107 groups=["Player"]]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=510006997 groups=["Player"]]
 shape = SubResource("RectangleShape2D_af25e")
@@ -72,6 +78,37 @@ damage = 45
 bullet_speed = 2000.0
 automatic = false
 type = true
+
+[node name="TankLoadout" type="Node2D" parent="Loadouts" unique_id=2103753226]
+
+[node name="Primary" parent="Loadouts/TankLoadout" unique_id=1874195605 instance=ExtResource("6_s1rgi")]
+position = Vector2(22, 29)
+slowest_interval = 0.6
+fastest_interval = 0.2
+spin_up_time = 10.0
+spin_down_time = 12.0
+range = 0.6
+damage = 30
+
+[node name="Secondary" parent="Loadouts/TankLoadout" unique_id=94762692 instance=ExtResource("3_tok1r")]
+position = Vector2(22, -29)
+bullet_scene = ExtResource("6_vlldt")
+range = 0.7
+fire_rate = 4.0
+damage = 40
+automatic = false
+
+[node name="JetLoadout" type="Node2D" parent="Loadouts" unique_id=1916630812]
+
+[node name="Primary" parent="Loadouts/JetLoadout" unique_id=2055949363 instance=ExtResource("3_tok1r")]
+position = Vector2(22, 29)
+range = 0.5
+fire_rate = 0.3
+damage = 25
+
+[node name="Secondary" parent="Loadouts/JetLoadout" unique_id=2058624252 instance=ExtResource("5_8g4oa")]
+position = Vector2(22, -29)
+range = 0.35
 
 [node name="Sprite2D3" type="Sprite2D" parent="." unique_id=525927556]
 position = Vector2(154, -29)

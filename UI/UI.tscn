@@ -42,3 +42,9 @@ offset_right = 60.0
 offset_bottom = 92.0
 text = "Health: 100"
 label_settings = SubResource("LabelSettings_af25e")
+
+[node name="UnlockMessage" type="Label" parent="CanvasLayer" unique_id=2125966748]
+offset_left = 901.0
+offset_top = 127.0
+offset_right = 941.0
+offset_bottom = 178.0

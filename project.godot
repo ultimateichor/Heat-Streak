@@ -178,6 +178,16 @@ Special={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Low Walls"
+2d_physics/layer_2="Player Body"
+2d_physics/layer_3="Enemy Body"
+2d_physics/layer_4="Player Hurtbox (Air)"
+2d_physics/layer_5="High Walls"
+2d_physics/layer_6="Player Hurtbox (Ground)"
+2d_physics/layer_7="Enemy Area"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

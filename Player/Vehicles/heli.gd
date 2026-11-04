@@ -9,6 +9,7 @@ func _take_damage(amount: int, type: int) -> void:
 	if type == 2:
 		amount = amount/1.5
 	currentHealth -= amount
+	GameManager.currentPlayerHealth = currentHealth
 	print(currentHealth)
 	UI._decrease_health(currentHealth)
 	if currentHealth <= 0:

@@ -14,13 +14,14 @@ var winCheck = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	GameManager.vehicle_unlocked.connect(_show_unlock)
 	winCounter.text = ("Enemies Left: " + str(enemiesNeeded))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	winCounter.text = ("Enemies Left: " + str(enemiesNeeded))
-	if enemiesNeeded == 0 and winCheck == false:
+	if enemiesNeeded <= 0 and winCheck == false:
 		winCheck = true
 		winCounter.text = str("Win")
 		# Land animation / walk off time
@@ -35,6 +36,13 @@ func _process(_delta: float) -> void:
 
 func _decrease_health(amount: int):
 	health.text = ("Health: " + str(amount))
+	
+func _show_unlock(index: int) -> void:
+	$CanvasLayer/UnlockMessage.text = GameManager.VEHICLE_NAMES[index] + " unlocked!"
+	$CanvasLayer/UnlockMessage.visible = true
+	# Wait 3 seconds, then hide it.
+	await get_tree().create_timer(3.0).timeout
+	$CanvasLayer/UnlockMessage.visible = false
 
 
 	

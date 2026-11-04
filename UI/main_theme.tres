@@ -23,6 +23,7 @@ corner_radius_bottom_left = 386
 [resource]
 default_font_size = 37
 Button/colors/font_focus_color = Color(1, 0.09411765, 0.49411765, 1)
+Button/colors/font_hover_color = Color(1, 0.09411765, 0.49411765, 1)
 Button/colors/icon_normal_color = Color(1, 1, 1, 1)
 Button/styles/focus = SubResource("StyleBoxFlat_2nl5o")
 Button/styles/hover = SubResource("StyleBoxFlat_ul0cs")

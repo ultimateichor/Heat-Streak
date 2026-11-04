@@ -92,8 +92,7 @@ visibility_layer = 2
 position = Vector2(444, 106)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=2073392443]
-collision_layer = 15
-collision_mask = 15
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=939645369]
 visibility_layer = 3
@@ -105,8 +104,7 @@ position = Vector2(585.5, 994)
 shape = SubResource("RectangleShape2D_af25e")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1511039659]
-collision_layer = 15
-collision_mask = 15
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=77565718]
 position = Vector2(-577, 108)

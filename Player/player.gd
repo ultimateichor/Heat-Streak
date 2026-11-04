@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+@export var use_debug_unlocks := false
+@export_flags("Car", "Helicopter", "Tank", "Jet") var debug_unlocked_vehicles := 0
 @export var SPEED : float = 425.0
 var using_controller := true
 var using_controller_right := false
@@ -28,13 +30,17 @@ var secondaryCooldown
 
 @export var limitUsage = true
 
+
 func _ready() -> void:
 	GameManager.player = self
+	_apply_debug_unlocks()
+	maxHealth = GameManager.maxPlayerHealth
 	if currentHealth < 0:
-		currentHealth = maxHealth
+		currentHealth = GameManager.currentPlayerHealth
 	target_angle = rotation
 	last_aim_angle = rotation
 	_equip_loadout(GameManager.selected_vehicle)
+	UI._decrease_health(GameManager.currentPlayerHealth)
 
 #checks current input method
 func _input(event: InputEvent) -> void:
@@ -159,6 +165,7 @@ func _on_rotation_timer_timeout() -> void:
 #Takes the damage from enemies and calls die() if health is <= 0
 func _take_damage(amount: int, type: int) -> void:
 	currentHealth -= amount
+	GameManager.currentPlayerHealth = currentHealth
 	print(currentHealth)
 	UI._decrease_health(currentHealth)
 	if currentHealth <= 0:
@@ -167,6 +174,7 @@ func _take_damage(amount: int, type: int) -> void:
 func _die():
 	print("death is upon us")
 	GameManager._end_game()
+	GameManager._reset()
 	get_tree().call_deferred("change_scene_to_file", 'res://UI/Screens/Lose/Game_Over.tscn')
 
 func _equip_loadout(index: int) -> void:
@@ -199,7 +207,7 @@ func _swap_to(path: String) -> void:
 	var newForm: Player = load(path).instantiate()
 	newForm.position = position
 	newForm.rotation = rotation
-	newForm.currentHealth = currentHealth
+	newForm.currentHealth = GameManager.currentPlayerHealth
 	newForm.using_controller = using_controller
 	
 	set_physics_process(false)
@@ -209,4 +217,30 @@ func _swap_to(path: String) -> void:
 
 	get_parent().add_child(newForm)
 	queue_free()
+	
+func _restore_health(amount: int):
+	if currentHealth < maxHealth:
+		currentHealth = min(currentHealth + amount, maxHealth)
+		GameManager.currentPlayerHealth = currentHealth
+		UI._decrease_health(GameManager.currentPlayerHealth)
 		
+func _apply_debug_unlocks() -> void:
+	# Skip if it's turned off, already applied this run, or this is an
+	# exported build (OS.is_debug_build() is only true when running
+	# from the editor, so players can never trigger this).
+	if not use_debug_unlocks or GameManager.debug_unlocks_applied or not OS.is_debug_build():
+		return
+	GameManager.debug_unlocks_applied = true
+
+	# Replace the unlocked list with exactly what's checked.
+	GameManager.unlocked_vehicles.clear()
+	for i in GameManager.VEHICLE_SCENES.size():
+		# 1 << i = the bit for vehicle i (1, 2, 4, 8...).
+		# & checks whether that bit is set, i.e. whether that box is checked.
+		if debug_unlocked_vehicles & (1 << i):
+			GameManager.unlocked_vehicles.append(i)
+
+	# If the selected vehicle isn't unlocked, select the first one that is.
+	if not GameManager.selected_vehicle in GameManager.unlocked_vehicles \
+			and not GameManager.unlocked_vehicles.is_empty():
+		GameManager.selected_vehicle = GameManager.unlocked_vehicles[0]

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cgbd0eytsmld1"]
+
+[ext_resource type="Script" uid="uid://gsminaugy8mv" path="res://Player/health_pickup.gd" id="1_qb5yp"]
+[ext_resource type="Texture2D" uid="uid://c3jmab7w11cin" path="res://Player/image.png" id="2_hun2p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_af25e"]
+
+[node name="Health Pickup" type="Node2D" unique_id=1461856341]
+scale = Vector2(0.215, 0.215)
+script = ExtResource("1_qb5yp")
+healAmount = 30
+
+[node name="Area2D" type="Area2D" parent="." unique_id=71498219]
+scale = Vector2(0.215, 0.215)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=964196380]
+scale = Vector2(0.215, 0.215)
+shape = SubResource("CircleShape2D_af25e")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1000367542]
+position = Vector2(0.48744488, 0.48744488)
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("2_hun2p")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
