@@ -76,12 +76,6 @@ enemiesNeeded = 40
 nextRoom = ExtResource("6_5ekew")
 metadata/_edit_use_anchors_ = true
 
-[node name="Enemy" parent="CanvasLayer" unique_id=1825160351 instance=ExtResource("10_x0c6o")]
-position = Vector2(470, 486)
-
-[node name="Enemy2" parent="CanvasLayer" unique_id=464164490 instance=ExtResource("10_x0c6o")]
-position = Vector2(1466, 635)
-
 [node name="Timer" type="Timer" parent="." unique_id=284873298]
 wait_time = 10.0
 one_shot = true
@@ -130,5 +124,11 @@ position = Vector2(517, 814)
 
 [node name="Enemy5" parent="." unique_id=1991604150 instance=ExtResource("6_5haw7")]
 position = Vector2(932, -178)
+
+[node name="Enemy6" parent="." unique_id=1825160351 instance=ExtResource("10_x0c6o")]
+position = Vector2(427, 540)
+
+[node name="Enemy7" parent="." unique_id=1996509254 instance=ExtResource("10_x0c6o")]
+position = Vector2(973, -25)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

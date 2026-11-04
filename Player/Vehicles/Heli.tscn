@@ -9,7 +9,7 @@ size = Vector2(70, 80)
 [node name="Heli" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
 z_index = 10
 collision_layer = 2
-collision_mask = 16
+collision_mask = 17
 motion_mode = 1
 script = ExtResource("1_7juqt")
 SPEED = 700.0
@@ -25,7 +25,7 @@ wait_time = 3.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=235330107 groups=["Player"]]
 collision_layer = 8
-collision_mask = 0
+collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=510006997]
 shape = SubResource("RectangleShape2D_af25e")
