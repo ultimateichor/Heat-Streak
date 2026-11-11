@@ -223,6 +223,13 @@ func _restore_health(amount: int):
 		currentHealth = min(currentHealth + amount, maxHealth)
 		GameManager.currentPlayerHealth = currentHealth
 		UI._decrease_health(GameManager.currentPlayerHealth)
+
+func _increase_max_health(amount: int):
+	maxHealth += amount
+	currentHealth += amount
+	GameManager.maxPlayerHealth = maxHealth
+	GameManager.currentPlayerHealth = currentHealth
+	UI._decrease_health(GameManager.currentPlayerHealth)
 		
 func _apply_debug_unlocks() -> void:
 	# Skip if it's turned off, already applied this run, or this is an

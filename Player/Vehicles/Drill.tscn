@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://upxaupm7c3f3"]
+
+[ext_resource type="Script" uid="uid://cyr2oab4u44fu" path="res://Player/Vehicles/drill.gd" id="1_nvkqc"]
+[ext_resource type="Texture2D" uid="uid://c82in2lya7sdb" path="res://Assets/New Piskel (5).png" id="2_nvkqc"]
+[ext_resource type="Texture2D" uid="uid://b14v6ouux7xu7" path="res://Assets/2BUEWD-TopView (2).png" id="2_q7tgf"]
+[ext_resource type="PackedScene" uid="uid://ctjxhfrs5am37" path="res://Player/Weapons/base_weapon.tscn" id="3_q7tgf"]
+[ext_resource type="Texture2D" uid="uid://d2ooa8mdilak6" path="res://Assets/New Piskel (1).png" id="5_q7tgf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
+size = Vector2(70, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxocv"]
+size = Vector2(93, 73)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fywpm"]
+radius = 6.2583733
+
+[node name="Drill" type="CharacterBody2D" unique_id=1601155827 groups=["Player"]]
+collision_layer = 2
+collision_mask = 21
+motion_mode = 1
+script = ExtResource("1_nvkqc")
+acceleration = 300
+grip = 12
+SPEED = 350.0
+isRobot = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=804397636]
+shape = SubResource("RectangleShape2D_af25e")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=8602036]
+
+[node name="RotationTimer" type="Timer" parent="." unique_id=1899031143]
+wait_time = 3.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=235330107 groups=["Player"]]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=510006997]
+shape = SubResource("RectangleShape2D_af25e")
+
+[node name="DamageTimer" type="Timer" parent="." unique_id=2050933388]
+wait_time = 2.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1153715324]
+position = Vector2(23.451801, 3.000001)
+rotation = 1.5707964
+scale = Vector2(1.3162422, 0.95219725)
+texture = ExtResource("2_q7tgf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=573628744]
+position = Vector2(-16, -1.0000001)
+rotation = 1.5707964
+scale = Vector2(4.64382, 4.64382)
+texture = ExtResource("2_nvkqc")
+
+[node name="BaseWeapon" parent="." unique_id=1133059679 instance=ExtResource("3_q7tgf")]
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=1814946588 groups=["Melee"]]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1157892519 groups=["Melee", "Player"]]
+position = Vector2(81.5, 0.5)
+shape = SubResource("RectangleShape2D_rxocv")
+
+[node name="DrillTimer" type="Timer" parent="." unique_id=706242022]
+wait_time = 7.0
+
+[node name="DrillCooldown" type="Timer" parent="." unique_id=370772692]
+
+[node name="Explosion" type="Area2D" parent="." unique_id=1804414725]
+collision_layer = 0
+collision_mask = 64
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion" unique_id=30317700]
+scale = Vector2(25.73, 25.73)
+shape = SubResource("CircleShape2D_fywpm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Explosion" unique_id=1750861993]
+visible = false
+position = Vector2(-160.99998, -14.000001)
+rotation = 1.5707964
+scale = Vector2(28.89873, 37.921875)
+texture = ExtResource("5_q7tgf")
+
+[node name="SurfaceDamageTime" type="Timer" parent="." unique_id=1855760896]
+
+[connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="DrillTimer" to="." method="_on_drill_timer_timeout"]
+[connection signal="timeout" from="DrillCooldown" to="." method="_on_drill_cooldown_timeout"]
+[connection signal="area_entered" from="Explosion" to="." method="_on_explosion_area_entered"]
+[connection signal="timeout" from="SurfaceDamageTime" to="." method="_on_surface_damage_time_timeout"]

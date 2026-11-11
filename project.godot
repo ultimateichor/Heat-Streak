@@ -187,6 +187,7 @@ Special={
 2d_physics/layer_5="High Walls"
 2d_physics/layer_6="Player Hurtbox (Ground)"
 2d_physics/layer_7="Enemy Area"
+2d_physics/layer_8="Player Hurtbox (Underground)"
 
 [rendering]
 

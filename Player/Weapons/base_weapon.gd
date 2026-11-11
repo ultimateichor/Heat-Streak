@@ -8,6 +8,9 @@ extends Node2D
 @export var bullet_speed := 900.0
 @export var automatic := true     
 @export var type = false
+var base_damage
+var base_range
+var base_fire_rate
 
 var cooldown := 0.0
 var weapon_id: String
@@ -19,8 +22,17 @@ var weapon_id: String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	weapon_id = get_parent().name + "/" + name
+	base_damage = damage
+	base_range = range
+	base_fire_rate = fire_rate
+	apply_upgrades()
 
-
+func apply_upgrades() -> void:
+	damage = base_damage + GameManager.get_weapon_upgrade(weapon_id, "damage")
+	range = base_range + GameManager.get_weapon_upgrade(weapon_id, "range")
+	# maxf keeps the time between shots from dropping below 0.02 seconds,
+	# so stacking many fire rate upgrades can't break the weapon.
+	fire_rate = maxf(base_fire_rate + GameManager.get_weapon_upgrade(weapon_id, "fire_rate"), 0.02)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if cooldown > 0.0:

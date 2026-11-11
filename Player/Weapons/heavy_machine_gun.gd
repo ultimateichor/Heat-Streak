@@ -31,7 +31,8 @@ func _physics_process(delta: float) -> void:
 func _try_fire(just_pressed: bool) -> void:
 	if $Timer2.time_left == 0:
 		trigger_held = true
-		fire_rate = lerpf(slowest_interval, fastest_interval, spin)
+		var bonus := GameManager.get_weapon_upgrade(weapon_id, "fire_rate")
+		fire_rate = maxf(lerpf(slowest_interval, fastest_interval, spin) + bonus, 0.02)
 		super._try_fire(just_pressed)
 
 

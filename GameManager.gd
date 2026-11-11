@@ -21,8 +21,10 @@ var wheel_open := false
 
 const ROBOT_SCENE := "res://Player/Player.tscn"
 const VEHICLE_SCENES := [
-	"res://Player/Vehicles/Car.tscn","res://Player/Vehicles/Heli.tscn","res://Player/Vehicles/Tank.tscn","res://Player/Vehicles/Jet.tscn"
+	"res://Player/Vehicles/Car.tscn","res://Player/Vehicles/Heli.tscn","res://Player/Vehicles/Tank.tscn","res://Player/Vehicles/Drill.tscn"
 ]
+
+var weapon_upgrades := {}
 
 var unlocked_vehicles: Array[int] = []
 var selected_vehicle := 0
@@ -60,6 +62,20 @@ func _unlock_vehicle(index: int) -> void:
 func _select_vehicle(index: int) -> void:
 	if index in unlocked_vehicles:
 		selected_vehicle = index
+		
+func add_weapon_upgrade(weapon_id: String, stat: String, amount: float) -> void:
+	# First upgrade for this weapon: create its own empty Dictionary.
+	if not weapon_upgrades.has(weapon_id):
+		weapon_upgrades[weapon_id] = {}
+	var stats: Dictionary = weapon_upgrades[weapon_id]
+	# .get(stat, 0.0) = the current bonus, or 0 if this stat has none yet.
+	stats[stat] = stats.get(stat, 0.0) + amount
+
+
+# Returns one stat's total bonus for one weapon (0 if never upgraded).
+func get_weapon_upgrade(weapon_id: String, stat: String) -> float:
+	# The {} default means "no upgrades for this weapon" if it isn't listed.
+	return weapon_upgrades.get(weapon_id, {}).get(stat, 0.0)
 
 func load_images_from_dir(path: String, outArray: Array) -> void:
 	if not path.ends_with("/"):
