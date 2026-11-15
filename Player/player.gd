@@ -41,6 +41,8 @@ func _ready() -> void:
 	last_aim_angle = rotation
 	_equip_loadout(GameManager.selected_vehicle)
 	UI._decrease_health(GameManager.currentPlayerHealth)
+	
+	
 
 #checks current input method
 func _input(event: InputEvent) -> void:
@@ -203,20 +205,49 @@ func _transform() -> void:
 	else:
 		_swap_to(GameManager.ROBOT_SCENE)
 
+
+
 func _swap_to(path: String) -> void:
 	var newForm: Player = load(path).instantiate()
-	newForm.position = position
-	newForm.rotation = rotation
+
+	# Save the current transform.
+	var old_global_position := global_position
+	var old_global_rotation := global_rotation
+
 	newForm.currentHealth = GameManager.currentPlayerHealth
 	newForm.using_controller = using_controller
-	
+
+	# Add the new player first.
+	get_parent().add_child(newForm)
+
+	newForm.global_position = old_global_position
+	newForm.global_rotation = old_global_rotation
+
+	# Get the camera from the OLD player.
+	var camera := find_child("Camera2D", true, false) as Camera2D
+
+	# Disable the old player.
 	set_physics_process(false)
 	hide()
 	$Area2D.set_deferred("monitorable", false)
 	$CollisionShape2D.set_deferred("disabled", true)
 
-	get_parent().add_child(newForm)
+	if camera:
+		# Transfer the existing camera to the new player.
+		camera.reparent(newForm, true)
+
+		camera.enabled = true
+		camera.make_current()
+		camera.reset_smoothing()
+
+		print("Camera transferred to: ", newForm.name)
+	else:
+		print("ERROR: Camera2D not found on old player!")
+
+	# Now it's safe to delete the old player.
 	queue_free()
+
+
 	
 func _restore_health(amount: int):
 	if currentHealth < maxHealth:
