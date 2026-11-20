@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bdw8ajaey4fbu" path="res://UI/UI.tscn" id="1_5haw7"]
 [ext_resource type="PackedScene" uid="uid://b8uwwjaheopus" path="res://Player/Player.tscn" id="1_cbsy4"]
+[ext_resource type="Texture2D" uid="uid://blfsiu131qasl" path="res://Assets/HeatGround1.png" id="1_nnvyt"]
 [ext_resource type="AudioStream" uid="uid://ds281wr1c3who" path="res://Namepending-one-v1.mp3" id="2_e18lo"]
 [ext_resource type="PackedScene" uid="uid://cuy3u5plsjk5n" path="res://UI/Screens/Pause/Pause.tscn" id="4_jgor1"]
 [ext_resource type="PackedScene" uid="uid://b8qpx1q8r8hul" path="res://Player/camera_2d.tscn" id="4_nnvyt"]
@@ -16,6 +17,15 @@ size = Vector2(2239, 93)
 
 [node name="Node2D" type="Node2D" unique_id=180366170]
 position = Vector2(29, -75)
+
+[node name="HeatGround1" type="Sprite2D" parent="." unique_id=1491056132]
+visible = false
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-155, 231)
+texture = ExtResource("1_nnvyt")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 10000)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1972800559]
 stream = ExtResource("2_e18lo")

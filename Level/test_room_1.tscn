@@ -30,9 +30,10 @@ zoom = Vector2(0.865, 0.865)
 
 [node name="Upgrade" parent="." unique_id=1461856341 instance=ExtResource("7_i6y8t")]
 position = Vector2(536, 508)
-upgradeOptions = 3
+upgradeOptions = 5
 form = 1
 fireRateAmount = 1.0
+sizeAmount = 328
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=526768355]
 

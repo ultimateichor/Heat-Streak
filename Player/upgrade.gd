@@ -1,6 +1,6 @@
 extends Node2D
 
-@export_enum("Health", "Damage", "Range", "Fire Rate") var upgradeOptions = 0
+@export_enum("Health", "Damage", "Range", "Fire Rate", "Bullet Speed", "Size") var upgradeOptions = 0
 @export_enum("Base", "Car", "Helicopter", "Tank", "Jet") var form := 0
 @export_enum("Primary", "Secondary") var weapon = 0
 
@@ -40,6 +40,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			GameManager.add_weapon_upgrade(weapon_id, "range", rangeAmount)
 		3:
 			GameManager.add_weapon_upgrade(weapon_id, "fire_rate", -fireRateAmount)
+		4:
+			GameManager.add_weapon_upgrade(weapon_id, "bullet_speed", bulletSpeedAmount)
+		5:
+			GameManager.add_weapon_upgrade(weapon_id, "size", sizeAmount)
 
 	var active_weapon = player.get_node_or_null("Loadouts/" + weapon_id)
 	if active_weapon:
