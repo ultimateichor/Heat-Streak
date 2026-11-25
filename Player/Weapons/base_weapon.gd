@@ -8,9 +8,12 @@ extends Node2D
 @export var bullet_speed := 900.0
 @export var automatic := true     
 @export var type = false
+@export var size = 1
 var base_damage
 var base_range
 var base_fire_rate
+var base_bullet_speed
+var base_bullet_size
 
 var cooldown := 0.0
 var weapon_id: String
@@ -25,6 +28,8 @@ func _ready() -> void:
 	base_damage = damage
 	base_range = range
 	base_fire_rate = fire_rate
+	base_bullet_speed = bullet_speed
+	#base_bullet_size = bullet_scene.get_scale()
 	apply_upgrades()
 
 func apply_upgrades() -> void:
@@ -33,6 +38,8 @@ func apply_upgrades() -> void:
 	# maxf keeps the time between shots from dropping below 0.02 seconds,
 	# so stacking many fire rate upgrades can't break the weapon.
 	fire_rate = maxf(base_fire_rate + GameManager.get_weapon_upgrade(weapon_id, "fire_rate"), 0.02)
+	bullet_speed = base_bullet_speed + GameManager.get_weapon_upgrade(weapon_id, "bullet_speed")
+	size *= maxf(GameManager.get_weapon_upgrade(weapon_id, "size"), 1)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if cooldown > 0.0:
@@ -59,4 +66,5 @@ func _spawn_bullet(angle: float) -> Node:
 	bullet.damage = damage
 	bullet.lifetime = range
 	bullet.piercing = type
+	bullet.scale *= size
 	return bullet
