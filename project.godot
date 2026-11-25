@@ -42,6 +42,8 @@ Player=""
 Enemy=""
 Melee=""
 UI=""
+Bullets=""
+Shield=""
 
 [gui]
 
