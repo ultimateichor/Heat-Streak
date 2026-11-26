@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c4yi1gpo0vpmv"]
+
+[ext_resource type="Script" uid="uid://baofgsv4lov3r" path="res://breakable_wall.gd" id="1_112cu"]
+[ext_resource type="Texture2D" uid="uid://b6gs7ttv74ggr" path="res://Obstacles/wall.png" id="2_44uk4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuo41"]
+size = Vector2(20.279358, 22.068968)
+
+[node name="Node2D" type="Node2D" unique_id=1044835346 groups=["Destroyable"]]
+scale = Vector2(9.665, 1.45)
+script = ExtResource("1_112cu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=484810623 groups=["Destroyable"]]
+collision_layer = 81
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1234456457 groups=["Destroyable"]]
+shape = SubResource("RectangleShape2D_af25e")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1751634012 groups=["Destroyable"]]
+collision_layer = 81
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=788420808 groups=["Destroyable"]]
+scale = Vector2(1, 0.9999999)
+shape = SubResource("RectangleShape2D_tuo41")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=438825412]
+texture = ExtResource("2_44uk4")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

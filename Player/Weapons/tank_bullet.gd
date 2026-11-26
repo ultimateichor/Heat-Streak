@@ -39,8 +39,15 @@ func _on_area_entered(area: Area2D) -> void:
 		if enemy.enemyHealth > 0:
 			enemy._enemy_take_damage(damage)
 		_explode()
+	if area.is_in_group("Destroyable"):
+		area.get_parent()._destroy()
+		_explode()
+		return
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Destroyable"):
+		area.get_parent()._destroy()
+		return
 	if not area.is_in_group("Enemy"):
 		return
 	var enemy = area.get_parent()
@@ -70,7 +77,7 @@ func _get_explosion_radius() -> float:
 func _on_body_entered(body: Node2D) -> void:
 	if explode:
 		return
-	if !body.is_in_group("Enemy") and !body.is_in_group("Player") and piercing == false:
+	if !body.is_in_group("Enemy") and !body.is_in_group("Player") and piercing == false and !body.is_in_group("Destroyable"):
 		_explode()
 
 func _on_timer_timeout() -> void:

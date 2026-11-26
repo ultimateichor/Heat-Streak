@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://0ms1jo4x8tcr"]
+
+[ext_resource type="Script" uid="uid://ia6yrcvugfxr" path="res://Enemies/ShieldEnemy.gd" id="1_noxkr"]
+[ext_resource type="PackedScene" uid="uid://c1pg7ios3gybl" path="res://Enemies/enemy_bullet.tscn" id="2_noxkr"]
+[ext_resource type="PackedScene" uid="uid://br80ygvufd44o" path="res://Player/health_pickup.tscn" id="3_3kk2b"]
+[ext_resource type="PackedScene" uid="uid://cgbd0eytsmld1" path="res://Player/big_health_pickup.tscn" id="4_fhgis"]
+[ext_resource type="Texture2D" uid="uid://b876bbt8a3a1k" path="res://Assets/New Piskel (4).png" id="5_dfvbn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3lat"]
+size = Vector2(54, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af25e"]
+size = Vector2(66, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf66c"]
+size = Vector2(37.8125, 79.828125)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1825160351 groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 21
+motion_mode = 1
+script = ExtResource("1_noxkr")
+bullet = ExtResource("2_noxkr")
+fireRate = 3.0
+bulletSpeed = 700
+maxEnemyHealth = 10
+type = 2
+SPEED = 175
+health_pickup = ExtResource("3_3kk2b")
+big_health_pickup = ExtResource("4_fhgis")
+health_drop_chance = 0.313
+big_health_drop_chance = 0.128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870279104]
+shape = SubResource("RectangleShape2D_q3lat")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1669331841]
+position = Vector2(-0.09940314, -0.3133707)
+rotation = 1.5707964
+scale = Vector2(2.2277071, 2.3906438)
+texture = ExtResource("5_dfvbn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=56399267 groups=["Enemy"]]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=240869863 groups=["Enemy"]]
+shape = SubResource("RectangleShape2D_af25e")
+
+[node name="DamageTimer" type="Timer" parent="." unique_id=891839855]
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=284749362]
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=57334782 groups=["Shield"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1706333085 groups=["Shield"]]
+position = Vector2(35, 0)
+shape = SubResource("RectangleShape2D_uf66c")
+
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
